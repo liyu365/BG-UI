@@ -1,0 +1,7 @@
+.svn/
+.idea/
+node_modules/
+/public/css_dist/
+/public/js_dist/
+/attachments/
+
