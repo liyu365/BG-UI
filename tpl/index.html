@@ -10,6 +10,7 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="/public/css/bootstrap/dist/bootstrap.css">
     <link rel="stylesheet" href="/public/css/basic.css">
+    <link rel="stylesheet" href="/public/css/font_awesome/css/font-awesome.css">
     <!--[if lt IE 9]>
     <script src="/public/js/vendor/html5shiv.min.js"></script>
     <script src="/public/js/vendor/respond.min.js"></script>
@@ -17,17 +18,36 @@
 </head>
 
 <body>
-    <div id="page_header"></div>
-    <div id="left_panel" class="border-box">
-        <div id="load">load</div>
-    </div>
+    <header id="page_header"></header>
+    <aside id="left_panel" class="border-box">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-group"></i>客户<b><i class="fa fa-plus-square-o"></i></b></a>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-fw fa-group"></i>客户信息</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-group"></i>联系人</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-group"></i>信用管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-lg fa-fw fa-group"></i>商品<b><i class="fa fa-plus-square-o"></i></b></a>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-fw fa-group"></i>商品1</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-group"></i>商品2</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-group"></i>商品3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
     <div id="main">
         <div id="ribbon"></div>
         <div id="content"></div>
     </div>
-    <div id="page_footer">
-        <div class="inside">LIYU WorkTable © 2016</div>
-    </div>
+    <footer id="page_footer">
+        <div class="inside">Liyu workTable © 2016</div>
+    </footer>
 
     <script src="/public/js/vendor/jquery.min.js"></script>
     <script src="/public/js/vendor/bootstrap/dist/bootstrap.js"></script>
