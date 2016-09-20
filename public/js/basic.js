@@ -1,17 +1,49 @@
-$("#load").on("click", function () {
+function checkURL() {
+    var hash = location.href.split("#").splice(1).join("");
+    if (hash !== '') {
+        loadURL(hash);
+    } else {
+        location.hash = 'desktop';
+        checkURL();
+    }
+}
+function loadURL(url) {
+    var content = $('#content');
+    var target = '/tpl/' + url;
+    console.log(target);
     $.ajax({
         type: 'get',
-        url: '/tpl/1.html',
+        url: target,
         data: '',
         dataType: 'html',
+        beforeSend: function () {
+            content.html('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>');
+        },
         success: function (returnData) {
-            $("#content").html(returnData);
+            setTimeout(function () {
+                content.css('opacity', 0).html(returnData);
+                content.animate({'opacity': 1}, {
+                        queue: false, duration: 200, complete: function () {
+
+                        }
+                    }
+                );
+            }, 200);
         },
         error: function () {
-
+            content.html('<h4 class="ajax-loading-error"><i class="fa fa-warning"></i> Error 404! Page not found.</h4>')
         }
     })
+}
+
+checkURL();
+$(document).on("click", 'nav a[href="#"]', function (e) {
+    e.preventDefault();
 });
+$(window).on('hashchange', function () {
+    checkURL();
+});
+
 
 //Ö÷µ¼º½À¸
 (function () {
