@@ -13,7 +13,7 @@ $("#load").on("click", function () {
     })
 });
 
-
+//Ö÷µ¼º½À¸
 (function () {
     var $nav = $('#left_panel nav');
     var $a = $nav.find('a');
@@ -64,4 +64,24 @@ $("#load").on("click", function () {
             });
         }
     });
+
+    var $minifyBtn = $('#left_panel .minifyBtn');
+    var $body = $('body');
+    $minifyBtn.on('click', function () {
+        $('#left_panel nav li.open').each(function () {
+            var $parent_li = $(this);
+            var $btn = $parent_li.find('a:first');
+            var $ul = $btn.next('ul');
+            var $i = $btn.find('b i');
+            $parent_li.removeClass('open');
+            $i.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+            $ul.css({'height': "auto"}).css('display', 'none');
+        });
+        if (!$body.hasClass('minified')) {
+            $body.addClass('minified');
+        } else {
+            $body.removeClass('minified');
+        }
+    });
 })();
+
