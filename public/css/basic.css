@@ -51,6 +51,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 .minified #left_panel, .minified nav > ul > li {overflow:visible;}
 .minified #left_panel nav > ul > li{border-bottom:1px solid #1A1817;border-top:1px solid #525151;}
 .minified #left_panel nav > ul > li > a > span{display:none;}
+.minified #left_panel nav > ul > li > a > i{margin:0 auto;}
 .minified #left_panel nav > ul > li > a > b{display:none;}
 .minified #left_panel nav > ul > li > a > span{z-index:2;position:absolute;top:0;left:40px;width:186px;height:38px;padding-left:10px;line-height:38px;background:#f5f5f5;color:#333;border:1px solid #bfbfbf;box-shadow:1px 1px 2px 0 rgba(0,0,0,.2);}
 .minified #left_panel nav > ul > li > ul{display:none !important;z-index:1;position:absolute;top:36px;left:40px;width:186px;background:#454545;border:1px solid #bfbfbf;box-shadow:1px 1px 2px 0 rgba(0,0,0,.2);}
