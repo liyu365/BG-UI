@@ -38,7 +38,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 #left_panel nav ul a b i{margin:0;}
 #left_panel nav > ul > li > a:hover{background:none;}
 #left_panel nav > ul > li > a:active{background:#616161;}
-#left_panel nav > ul > li > ul{position:relative;padding:7px 0;background:rgba(69,69,69,.6);overflow:hidden;}
+#left_panel nav > ul > li > ul{position:relative;background:rgba(69,69,69,.6);overflow:hidden;}
 #left_panel nav > ul > li > ul::before{content:"";display:block;position:absolute;z-index:1;left:23px;top:0;bottom:0;border-left:1px solid #7A7A7A;}
 #left_panel nav > ul > li > ul > li::before{content:"";display:block;position:absolute;width:8px;left:23px;top:16px;border-top:1px solid #7A7A7A;z-index:1;}
 #left_panel nav > ul > li > ul > li > a{padding:7px 10px 7px 42px;}

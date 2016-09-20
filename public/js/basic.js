@@ -27,7 +27,7 @@ $("#load").on("click", function () {
                 var ul_orgH = $ul.innerHeight();
                 if (!$parent_li.hasClass('open')) {
                     $parent_li.addClass('open');
-                    $ul.css('height', 0).css('display', 'block');
+                    $ul.css({'height': 0}).css('display', 'block');
                     $i.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
                     $ul.animate({"height": ul_orgH}, {
                             queue: false, duration: 200, complete: function () {
@@ -40,11 +40,27 @@ $("#load").on("click", function () {
                     $i.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
                     $ul.animate({"height": 0}, {
                             queue: false, duration: 200, complete: function () {
-                                $ul.css('height', 'auto').css('display', 'none');
+                                $ul.css({'height': "auto"}).css('display', 'none');
                             }
                         }
                     );
                 }
+
+                $others_li = $btn.parent().siblings('.open');
+                $others_li.each(function () {
+                    var $parent_li = $(this);
+                    var $btn = $parent_li.find('a:first');
+                    var $ul = $btn.next('ul');
+                    var $i = $btn.find('b i');
+                    $parent_li.removeClass('open');
+                    $i.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+                    $ul.animate({"height": 0}, {
+                            queue: false, duration: 200, complete: function () {
+                                $ul.css({'height': "auto"}).css('display', 'none');
+                            }
+                        }
+                    );
+                });
             });
         }
     });
