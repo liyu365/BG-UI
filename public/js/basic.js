@@ -44,6 +44,26 @@ $(window).on('hashchange', function () {
     checkURL();
 });
 
+//头部三个按钮
+(function () {
+    var $left_panel = $('#left_panel');
+    var $body = $('body');
+    $('#page_header .toggleMenu_btn').on('click', function () {
+        $body.removeClass('minified');
+        if (parseInt($left_panel.css('left')) == 0) {
+            $left_panel.css('left', 220);
+        } else {
+            $left_panel.css('left', 0);
+        }
+    });
+    $(window).on('resize', function () {
+        if ($(window).width() >= 767) {
+            $left_panel.css('left', 0);
+        } else {
+            $body.removeClass('minified');
+        }
+    });
+})();
 
 //主导航栏
 (function () {
