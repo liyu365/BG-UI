@@ -52,17 +52,21 @@ $(window).on('hashchange', function () {
 (function () {
     var $left_panel = $('#left_panel');
     var $body = $('body');
-    $('#page_header .toggleMenu_btn').on('click', function () {
+    var $toggleMenu_btn = $('#page_header .toggleMenu_btn');
+    $toggleMenu_btn.on('click', function () {
         $body.removeClass('minified');
         if (parseInt($left_panel.css('left')) == 0) {
             $left_panel.css('left', 220);
+            $toggleMenu_btn.addClass('active');
         } else {
             $left_panel.css('left', 0);
+            $toggleMenu_btn.removeClass('active');
         }
     });
     $(window).on('resize', function () {
         if ($(window).width() >= 767) {
             $left_panel.css('left', 0);
+            $toggleMenu_btn.removeClass('active');
         } else {
             $body.removeClass('minified');
         }

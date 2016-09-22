@@ -32,7 +32,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 
 #page_header{padding:0 13px 0 0;}
 #page_header .right_side{float:right;}
-#page_header .right_side span{display:block;float:left;width:30px;height:30px;line-height:30px;text-align:center;font-size:14px;border-radius:2px;border:1px solid #bfbfbf;color:#6D6A69;margin-left:6px;margin-top:10px;
+#page_header .right_side span{display:block;float:left;width:30px;height:30px;line-height:30px;text-align:center;font-size:14px;border-radius:2px;border:1px solid #bfbfbf;color:#6D6A69;margin-left:6px;margin-top:10px;box-shadow:inset 0 0 4px 1px rgba(0,0,0,.08);cursor:pointer;
     background: #f8f8f8;
     background: -moz-linear-gradient(left,#f8f8f8 93%,#f1f1f1 100%);
     background: -webkit-gradient(linear,left top,right top,color-stop(93%,#f8f8f8),color-stop(100%,#f1f1f1));
@@ -41,7 +41,8 @@ body{width:100%;min-height:100%;background:#ededed;}
     background: -ms-linear-gradient(left,#f8f8f8 93%,#f1f1f1 100%);
     background: linear-gradient(to right,#f8f8f8 93%,#f1f1f1 100%);
 }
-#page_header .right_side span:hover{box-shadow:inset 0 0 4px 1px rgba(0,0,0,.08);color:#222;cursor:pointer;}
+#page_header .right_side span:hover{color:#222;}
+#page_header .right_side span.active{background:#5a5a5a;color:#fff;border:1px solid #5a5a5a;}
 #page_header .right_side .toggleMenu_btn{display:none;}
 
 #left_panel nav ul{list-style:none;padding:0;margin:0;}
