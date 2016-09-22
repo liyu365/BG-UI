@@ -7,9 +7,20 @@ function checkURL() {
     if (hash !== '') {
         loadURL(hash);
     } else {
-        window.location.hash = 'desktop';
+        hash = 'desktop';
+        window.location.hash = hash;
         loadURL('desktop');
     }
+    //console.log($('nav li:has(a[href="' + '#' + hash + '"])'));
+    var title = '';
+    var $breadcrumb = $('#ribbon .breadcrumb');
+    title = $('nav a[href="' + '#' + hash + '"]').find('span').text();
+    if (hash != 'desktop' && title != '') {
+        $breadcrumb.html('<li><i class="fa fa-home"></i>Â∑•‰ΩúÂè∞</li><li>' + title + '</li>');
+    } else {
+        $breadcrumb.html('<li><i class="fa fa-home"></i>Â∑•‰ΩúÂè∞</li>');
+    }
+    console.log(title);
 }
 function loadURL(url) {
     var content = $('#content');
@@ -48,7 +59,7 @@ $(window).on('hashchange', function () {
     checkURL();
 });
 
-//Õ∑≤ø»˝∏ˆ∞¥≈•
+//
 (function () {
     var $left_panel = $('#left_panel');
     var $body = $('body');
@@ -73,7 +84,7 @@ $(window).on('hashchange', function () {
     });
 })();
 
-//÷˜µº∫Ω¿∏
+//
 (function () {
     var $nav = $('#left_panel nav');
     var $a = $nav.find('a');

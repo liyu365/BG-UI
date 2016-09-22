@@ -5,7 +5,7 @@ $.navAsAjax = true;
 $.sound_path = "sound/";
 $.sound_on = true;
 /*
- * Impacts the responce rate of some of the responsive elements (lower 
+ * Impacts the responce rate of some of the responsive elements (lower
  * value affects CPU but improves speed)
  */
 var throttle_delay = 250,
@@ -19,31 +19,31 @@ var throttle_delay = 250,
  */
     enableJarvisWidgets = true,
 /*
- * Warning: Enabling mobile widgets could potentially crash your webApp 
- * if you have too many widgets running at once 
+ * Warning: Enabling mobile widgets could potentially crash your webApp
+ * if you have too many widgets running at once
  * (must have enableJarvisWidgets = true)
  */
     enableMobileWidgets = false,
 /*
  * Turn on fast click for mobile devices
  * Enable this to activate fastclick plugin
- * dependency: js/plugin/fastclick/fastclick.js 
+ * dependency: js/plugin/fastclick/fastclick.js
  */
     fastClick = true,
 /*
- * These elements are ignored during DOM object deletion for ajax version 
+ * These elements are ignored during DOM object deletion for ajax version
  * It will delete all objects during page load with these exceptions:
  */
     ignore_key_elms = ["#header, #left-panel, #main, div.page-footer, #shortcut, #divSmallBoxes, #divMiniIcons, #divbigBoxes, #voiceModal, script"];
 
-$.fn.modal.defaults.maxHeight = function () {
+$.fn.modal.defaults.maxHeight = function(){
     // subtract the height of the modal header and footer
     return $(window).height() - 165;
 }
 /*! v1.4.1 - 2014-06-27 */
 function runAllForms() {
     $.fn.slider && $(".slider").slider(),
-    $.fn.select2 && $(".select2").each(function () {
+    $.fn.select2 && $(".select2").each(function() {
         var a = $(this),
             b = a.attr("data-select-width") || "100%";
         a.select2({
@@ -52,7 +52,7 @@ function runAllForms() {
         }),
             a = null
     }),
-    $.fn.mask && $("[data-mask]").each(function () {
+    $.fn.mask && $("[data-mask]").each(function() {
         var a = $(this),
             b = a.attr("data-mask") || "error...",
             c = a.attr("data-mask-placeholder") || "X";
@@ -61,7 +61,7 @@ function runAllForms() {
         }),
             a = null
     }),
-    $.fn.autocomplete && $("[data-autocomplete]").each(function () {
+    $.fn.autocomplete && $("[data-autocomplete]").each(function() {
         var a = $(this),
             b = a.data("autocomplete") || ["The", "Quick", "Brown", "Fox", "Jumps", "Over", "Three", "Lazy", "Dogs"];
         a.autocomplete({
@@ -69,7 +69,7 @@ function runAllForms() {
         }),
             a = null
     }),
-    $.fn.datepicker && $(".datepicker").each(function () {
+    $.fn.datepicker && $(".datepicker").each(function() {
         var a = $(this),
             b = a.attr("data-dateformat") || "dd.mm.yy";
         a.datepicker({
@@ -80,21 +80,15 @@ function runAllForms() {
             a = null
     })
     //date-picker
-    $('.hasDatepicker').datepicker({language: 'zh-CN', todayBtn: true, todayHighlight: true, format: 'yyyy-mm-dd'});
-    $('.hasDateTimepicker').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm',
-        language: 'zh-cn',
-        sideBySide: true,
-        pickDate: true,
-        pickTime: true
-    });
+    $('.hasDatepicker').datepicker({language: 'zh-CN',todayBtn: true,todayHighlight: true,format: 'yyyy-mm-dd'});
+    $('.hasDateTimepicker').datetimepicker({format: 'YYYY-MM-DD HH:mm',language: 'zh-cn',sideBySide:true,pickDate: true,pickTime: true});
     //chosen
-    $('.chosen-select').chosen({search_contains: true, width: "90%"});
+    $('.chosen-select').chosen({search_contains:true,width: "90%"});
 }
 function runAllCharts() {
     if ($.fn.sparkline) {
         var a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, _, ab, bb, cb, db, eb, fb, gb, hb, ib, jb, kb, lb, mb, nb, ob, pb, qb, rb, sb;
-        $(".sparkline").each(function () {
+        $(".sparkline").each(function() {
             var tb = $(this),
                 ub = tb.data("sparkline-type") || "bar";
             if ("bar" == ub && (a = tb.data("sparkline-bar-color") || tb.css("color") || "#0000f0", b = tb.data("sparkline-height") || "26px", c = tb.data("sparkline-barwidth") || 5, d = tb.data("sparkline-barspacing") || 2, e = tb.data("sparkline-negbar-color") || "#A90329", f = tb.data("sparkline-barstacked-color") || ["#A90329", "#0099c6", "#98AA56", "#da532c", "#4490B1", "#6E9461", "#990099", "#B4CAD3"], tb.sparkline("html", {
@@ -235,7 +229,7 @@ function runAllCharts() {
             }), tb = null)
         })
     }
-    $.fn.easyPieChart && $(".easy-pie-chart").each(function () {
+    $.fn.easyPieChart && $(".easy-pie-chart").each(function() {
         var a = $(this),
             b = a.css("color") || a.data("pie-color"),
             c = a.data("pie-track-color") || "rgba(0,0,0,0.04)",
@@ -249,7 +243,7 @@ function runAllCharts() {
             "animate": 1500,
             "rotate": -90,
             "size": d,
-            "onStep": function (a, b, c) {
+            "onStep": function(a, b, c) {
                 $(this.el).find(".percent").text(Math.round(c))
             }
         }),
@@ -270,31 +264,27 @@ function setup_widgets_desktop() {
         toggleButton: !0,
         toggleClass: "fa fa-minus | fa fa-plus",
         toggleSpeed: 200,
-        onToggle: function () {
-        },
+        onToggle: function() {},
         deleteButton: !0,
         deleteClass: "fa fa-times",
         deleteSpeed: 200,
-        onDelete: function () {
-        },
+        onDelete: function() {},
         editButton: !0,
         editPlaceholder: ".jarviswidget-editbox",
         editClass: "fa fa-cog | fa fa-save",
         editSpeed: 200,
-        onEdit: function () {
-        },
+        onEdit: function() {},
         colorButton: !0,
         fullscreenButton: !0,
         fullscreenClass: "fa fa-expand | fa fa-compress",
         fullscreenDiff: 3,
-        onFullscreen: function () {
-        },
+        onFullscreen: function() {},
         customButton: !1,
         customClass: "folder-10 | next-10",
-        customStart: function () {
+        customStart: function() {
             alert("Hello you, this is a custom button...")
         },
-        customEnd: function () {
+        customEnd: function() {
             alert("bye, till next time...")
         },
         buttonOrder: "%refresh% %custom% %edit% %toggle% %fullscreen% %delete%",
@@ -312,13 +302,10 @@ function setup_widgets_desktop() {
         labelUpdated: "Last Update:",
         labelRefresh: "Refresh",
         labelDelete: "Delete widget:",
-        afterLoad: function () {
-        },
+        afterLoad: function() {},
         rtl: !1,
-        onChange: function () {
-        },
-        onSave: function () {
-        },
+        onChange: function() {},
+        onSave: function() {},
         ajaxnav: $.navAsAjax
     })
 }
@@ -342,8 +329,7 @@ function checkURL() {
     if (!a) try {
         var b = window.document.URL;
         b && b.indexOf("#", 0) > 0 && b.indexOf("#", 0) < b.length + 1 && (a = b.substring(b.indexOf("#", 0) + 1))
-    } catch (c) {
-    }
+    } catch(c) {}
     if (container = $("#content"), a) {
         $("nav li.active").removeClass("active"),
             $('nav li:has(a[href="' + a + '"])').addClass("active");
@@ -362,11 +348,11 @@ function loadURL(a, b) {
         url: a,
         dataType: "html",
         cache: !0,
-        beforeSend: function () {
+        beforeSend: function() {
             if ($.navAsAjax && $(".google_maps")[0] && b[0] == $("#content")[0]) {
                 var a = $(".google_maps"),
                     c = 0;
-                a.each(function () {
+                a.each(function() {
                     c++;
                     var b = document.getElementById(this.id);
                     c == a.length + 1 || b && b.parentNode.removeChild(b)
@@ -374,7 +360,7 @@ function loadURL(a, b) {
             }
             if ($.navAsAjax && $(".dataTables_wrapper")[0] && b[0] == $("#content")[0]) {
                 var d = $.fn.dataTable.fnTables(!0);
-                $(d).each(function () {
+                $(d).each(function() {
                     $(this).dataTable().fnDestroy()
                 })
             }
@@ -387,11 +373,13 @@ function loadURL(a, b) {
                 },
                 "fast"))
         },
-        success: function (a) {
-            if (b[0] == $("#content")[0]) {
+        success: function(a) {
+            if ( b[0] == $("#content")[0] )
+            {
                 $('body').removeClass('modal-open');
             }
-            if (!a.match("^\{(.+:.+,*){1,}\}$")) {
+            if (!a.match("^\{(.+:.+,*){1,}\}$"))
+            {
                 b.css({
                     opacity: "0.0"
                 }).html(a).delay(50).animate({
@@ -401,11 +389,12 @@ function loadURL(a, b) {
                     a = null,
                     b = null
             }
-            else {
+            else
+            {
                 small_box_notify(a.info);
             }
         },
-        error: function () {
+        error: function() {
             b.html('<h4 class="ajax-loading-error"><i class="fa fa-warning txt-color-orangeDark"></i> Error 404! Page not found.</h4>')
         },
         async: !0
@@ -415,16 +404,16 @@ function drawBreadCrumb(a) {
     var b = $("nav li.active > a"),
         c = b.length;
     bread_crumb.empty(),
-        bread_crumb.append($("<li><i class='fa fa-home'></i> ����̨</li>")),
-        b.each(function () {
+        bread_crumb.append($("<li><i class='fa fa-home'></i> 宸ヤ綔鍙�</li>")),
+        b.each(function() {
             bread_crumb.append($("<li></li>").html($.trim($(this).clone().children(".badge").remove().end().text()))),
             --c || (document.title = bread_crumb.find("li:last-child").text())
         }),
     void 0 != a && $.each(a,
-        function (a, b) {
+        function(a, b) {
             bread_crumb.append($("<li></li>").html(b)),
                 document.title = bread_crumb.find("li:last-child").text(),
-                document.title += ' | ' + bread_crumb.find("li").eq(-2).text()
+                document.title += ' | '+bread_crumb.find("li").eq(-2).text()
         });
     document.title += ' - SibooERP';
 }
@@ -437,7 +426,7 @@ function pageSetUp() {
 }
 $.root_ = $("body"),
     $.intervalArr = [];
-var calc_navbar_height = function () {
+var calc_navbar_height = function() {
         var a = null;
         return $("#header").length && (a = $("#header").height()),
         null === a && (a = $('<div id="header"></div>').height()),
@@ -450,51 +439,49 @@ var calc_navbar_height = function () {
     thisDevice = null,
     ismobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()),
     jsArray = {},
-    initApp = function (a) {
-        return a.addDeviceType = function () {
+    initApp = function(a) {
+        return a.addDeviceType = function() {
             return ismobile ? ($.root_.addClass("mobile-detected"), thisDevice = "mobile", fastClick ? ($.root_.addClass("needsclick"), FastClick.attach(document.body), !1) : void 0) : ($.root_.addClass("desktop-detected"), thisDevice = "desktop", !1)
         },
-            a.menuPos = function () {
-                ($.root_.hasClass("menu-on-top") || "top" == localStorage.getItem("sm-setmenu")) && (topmenu = !0, $.root_.addClass("menu-on-top"))
+            a.menuPos = function() { ($.root_.hasClass("menu-on-top") || "top" == localStorage.getItem("sm-setmenu")) && (topmenu = !0, $.root_.addClass("menu-on-top"))
             },
-            a.SmartActions = function () {
+            a.SmartActions = function() {
                 var a = {
-                    userLogout: function (a) {
+                    userLogout: function(a) {
                         function b() {
                             window.location = a.attr("href")
                         }
-
                         $.SmartMessageBox({
-                                title: "<i class='fa fa-sign-out txt-color-orangeDark'></i> �˳�ϵͳ <span class='txt-color-orangeDark'><strong>" + $("#show-shortcut").text() + "</strong></span> ?",
-                                content: a.data("logout-msg") || "��ȴȷ��Ҫ�˳�ϵͳô��",
-                                buttons: "[ȡ��][ȷ��]"
+                                title: "<i class='fa fa-sign-out txt-color-orangeDark'></i> 閫€鍑虹郴缁� <span class='txt-color-orangeDark'><strong>" + $("#show-shortcut").text() + "</strong></span> ?",
+                                content: a.data("logout-msg") || "鎮ㄥ嵈纭畾瑕侀€€鍑虹郴缁熶箞锛�",
+                                buttons: "[鍙栨秷][纭畾]"
                             },
-                            function (a) {
-                                "ȷ��" == a && ($.root_.addClass("animated fadeOutUp"), setTimeout(b, 1e3))
+                            function(a) {
+                                "纭畾" == a && ($.root_.addClass("animated fadeOutUp"), setTimeout(b, 1e3))
                             })
                     },
-                    resetWidgets: function (a) {
+                    resetWidgets: function(a) {
                         $.widresetMSG = a.data("reset-msg"),
                             $.SmartMessageBox({
                                     title: "<i class='fa fa-refresh' style='color:green'></i> Clear Local Storage",
                                     content: $.widresetMSG || "Would you like to RESET all your saved widgets and clear LocalStorage?",
                                     buttons: "[No][Yes]"
                                 },
-                                function (a) {
+                                function(a) {
                                     "Yes" == a && localStorage && (localStorage.clear(), location.reload())
                                 })
                     },
-                    launchFullscreen: function (a) {
+                    launchFullscreen: function(a) {
                         $.root_.hasClass("full-screen") ? ($.root_.removeClass("full-screen"), document.exitFullscreen ? document.exitFullscreen() : document.mozCancelFullScreen ? document.mozCancelFullScreen() : document.webkitExitFullscreen && document.webkitExitFullscreen()) : ($.root_.addClass("full-screen"), a.requestFullscreen ? a.requestFullscreen() : a.mozRequestFullScreen ? a.mozRequestFullScreen() : a.webkitRequestFullscreen ? a.webkitRequestFullscreen() : a.msRequestFullscreen && a.msRequestFullscreen())
                     },
-                    minifyMenu: function (a) {
+                    minifyMenu: function(a) {
                         $.root_.hasClass("menu-on-top") || ($.root_.toggleClass("minified"), $.root_.removeClass("hidden-menu"), $("html").removeClass("hidden-menu-mobile-lock"), a.effect("highlight", {},
                             500))
                     },
-                    toggleMenu: function () {
+                    toggleMenu: function() {
                         $.root_.hasClass("menu-on-top") ? $.root_.hasClass("menu-on-top") && $.root_.hasClass("mobile-view-activated") && ($("html").toggleClass("hidden-menu-mobile-lock"), $.root_.toggleClass("hidden-menu"), $.root_.removeClass("minified")) : ($("html").toggleClass("hidden-menu-mobile-lock"), $.root_.toggleClass("hidden-menu"), $.root_.removeClass("minified"))
                     },
-                    toggleShortcut: function () {
+                    toggleShortcut: function() {
                         function a() {
                             shortcut_dropdown.animate({
                                     height: "hide"
@@ -502,7 +489,6 @@ var calc_navbar_height = function () {
                                 300, "easeOutCirc"),
                                 $.root_.removeClass("shortcut-on")
                         }
-
                         function b() {
                             shortcut_dropdown.animate({
                                     height: "show"
@@ -510,56 +496,55 @@ var calc_navbar_height = function () {
                                 200, "easeOutCirc"),
                                 $.root_.addClass("shortcut-on")
                         }
-
                         shortcut_dropdown.is(":visible") ? a() : b(),
-                            shortcut_dropdown.find("a").click(function (b) {
+                            shortcut_dropdown.find("a").click(function(b) {
                                 b.preventDefault(),
                                     window.location = $(this).attr("href"),
                                     setTimeout(a, 300)
                             }),
-                            $(document).mouseup(function (b) {
+                            $(document).mouseup(function(b) {
                                 shortcut_dropdown.is(b.target) || 0 !== shortcut_dropdown.has(b.target).length || a()
                             })
                     }
                 };
                 $.root_.on("click", '[data-action="userLogout"]',
-                    function (b) {
+                    function(b) {
                         var c = $(this);
                         a.userLogout(c),
                             b.preventDefault(),
                             c = null
                     }),
                     $.root_.on("click", '[data-action="resetWidgets"]',
-                        function (b) {
+                        function(b) {
                             var c = $(this);
                             a.resetWidgets(c),
                                 b.preventDefault(),
                                 c = null
                         }),
                     $.root_.on("click", '[data-action="launchFullscreen"]',
-                        function (b) {
+                        function(b) {
                             a.launchFullscreen(document.documentElement),
                                 b.preventDefault()
                         }),
                     $.root_.on("click", '[data-action="minifyMenu"]',
-                        function (b) {
+                        function(b) {
                             var c = $(this);
                             a.minifyMenu(c),
                                 b.preventDefault(),
                                 c = null
                         }),
                     $.root_.on("click", '[data-action="toggleMenu"]',
-                        function (b) {
+                        function(b) {
                             a.toggleMenu(),
                                 b.preventDefault()
                         }),
                     $.root_.on("click", '[data-action="toggleShortcut"]',
-                        function (b) {
+                        function(b) {
                             a.toggleShortcut(),
                                 b.preventDefault()
                         })
             },
-            a.leftNav = function () {
+            a.leftNav = function() {
                 topmenu || $("nav ul").jarvismenu({
                     accordion: !0,
                     speed: menu_speed,
@@ -567,15 +552,15 @@ var calc_navbar_height = function () {
                     openedSign: '<em class="fa fa-minus-square-o"></em>'
                 })
             },
-            a.domReadyMisc = function () {
+            a.domReadyMisc = function() {
                 $("[rel=tooltip]").length && $("[rel=tooltip]").tooltip(),
-                    $("#search-mobile").click(function () {
+                    $("#search-mobile").click(function() {
                         $.root_.addClass("search-mobile")
                     }),
-                    $("#cancel-search-js").click(function () {
+                    $("#cancel-search-js").click(function() {
                         $.root_.removeClass("search-mobile")
                     }),
-                    $("#activity").click(function (a) {
+                    $("#activity").click(function(a) {
                         var b = $(this);
                         b.find(".badge").hasClass("bg-color-red") && (b.find(".badge").removeClassPrefix("bg-color-"), b.find(".badge").text("0")),
                             b.next(".ajax-dropdown").is(":visible") ? (b.next(".ajax-dropdown").fadeOut(150), b.removeClass("active")) : (b.next(".ajax-dropdown").fadeIn(150), b.addClass("active"));
@@ -584,21 +569,21 @@ var calc_navbar_height = function () {
                             c = null,
                             a.preventDefault()
                     }),
-                    $('input[name="activity"]').change(function () {
+                    $('input[name="activity"]').change(function() {
                         var a = $(this);
                         url = a.attr("id"),
                             container = $(".ajax-notifications"),
                             loadURL(url, container),
                             a = null
                     }),
-                    $(document).mouseup(function (a) {
+                    $(document).mouseup(function(a) {
                         $(".ajax-dropdown").is(a.target) || 0 !== $(".ajax-dropdown").has(a.target).length || ($(".ajax-dropdown").fadeOut(150), $(".ajax-dropdown").prev().removeClass("active"))
                     }),
                     $("button[data-btn-loading]").on("click",
-                        function () {
+                        function() {
                             var a = $(this);
                             a.button("loading"),
-                                setTimeout(function () {
+                                setTimeout(function() {
                                         a.button("reset")
                                     },
                                     3e3),
@@ -608,37 +593,35 @@ var calc_navbar_height = function () {
                 parseInt($this.text()) > 0 && ($this.addClass("bg-color-red bounceIn animated"), $this = null)
             },
             a
-    }({});
+    } ({});
 initApp.addDeviceType(),
     initApp.menuPos(),
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
         initApp.SmartActions(),
             initApp.leftNav(),
             initApp.domReadyMisc()
     }),
-    function (a, b, c) {
+    function(a, b, c) {
         function d() {
-            e = b[h](function () {
-                    f.each(function () {
+            e = b[h](function() {
+                    f.each(function() {
                         var b, c, d = a(this),
                             e = a.data(this, j);
                         try {
                             b = d.width()
-                        } catch (f) {
+                        } catch(f) {
                             b = d.width
                         }
                         try {
                             c = d.height()
-                        } catch (f) {
+                        } catch(f) {
                             c = d.height
-                        }
-                        (b !== e.w || c !== e.h) && d.trigger(i, [e.w = b, e.h = c])
+                        } (b !== e.w || c !== e.h) && d.trigger(i, [e.w = b, e.h = c])
                     }),
                         d()
                 },
                 g[k])
         }
-
         var e, f = a([]),
             g = a.resize = a.extend(a.resize, {}),
             h = "setTimeout",
@@ -649,8 +632,8 @@ initApp.addDeviceType(),
         g[k] = throttle_delay,
             g[l] = !0,
             a.event.special[i] = {
-                setup: function () {
-                    if (!g[l] && this[h]) return !1;
+                setup: function() {
+                    if (!g[l] && this[h]) return ! 1;
                     var b = a(this);
                     f = f.add(b);
                     try {
@@ -658,7 +641,7 @@ initApp.addDeviceType(),
                             w: b.width(),
                             h: b.height()
                         })
-                    } catch (c) {
+                    } catch(c) {
                         a.data(this, j, {
                             w: b.width,
                             h: b.height
@@ -666,38 +649,37 @@ initApp.addDeviceType(),
                     }
                     1 === f.length && d()
                 },
-                teardown: function () {
-                    if (!g[l] && this[h]) return !1;
+                teardown: function() {
+                    if (!g[l] && this[h]) return ! 1;
                     var b = a(this);
                     f = f.not(b),
                         b.removeData(j),
                     f.length || clearTimeout(e)
                 },
-                add: function (b) {
+                add: function(b) {
                     function d(b, d, f) {
                         var g = a(this),
                             h = a.data(this, j);
-                        h.w = d !== c ? d : g.width(),
-                            h.h = f !== c ? f : g.height(),
+                        h.w = d !== c ? d: g.width(),
+                            h.h = f !== c ? f: g.height(),
                             e.apply(this, arguments)
                     }
-
-                    if (!g[l] && this[h]) return !1;
+                    if (!g[l] && this[h]) return ! 1;
                     var e;
                     return a.isFunction(b) ? (e = b, d) : (e = b.handler, void(b.handler = d))
                 }
             }
-    }(jQuery, this),
-    $("#main").resize(function () {
+    } (jQuery, this),
+    $("#main").resize(function() {
         $(window).width() < 979 ? ($.root_.addClass("mobile-view-activated"), $.root_.removeClass("minified")) : $.root_.hasClass("mobile-view-activated") && $.root_.removeClass("mobile-view-activated")
     });
-var ie = function () {
+var ie = function() {
     for (var a, b = 3,
              c = document.createElement("div"), d = c.getElementsByTagName("i"); c.innerHTML = "<!--[if gt IE " + ++b + "]><i></i><![endif]-->", d[0];);
-    return b > 4 ? b : a
-}();
+    return b > 4 ? b: a
+} ();
 if ($.fn.extend({
-        jarvismenu: function (a) {
+        jarvismenu: function(a) {
             var b = {
                     accordion: "true",
                     speed: 200,
@@ -706,48 +688,48 @@ if ($.fn.extend({
                 },
                 c = $.extend(b, a),
                 d = $(this);
-            d.find("li").each(function () {
-                0 !== $(this).find("ul").size() && ($(this).find("a:first").append("<b class='collapse-sign'>" + c.closedSign + "</b>"), "#" == $(this).find("a:first").attr("href") && $(this).find("a:first").click(function () {
-                    return !1
+            d.find("li").each(function() {
+                0 !== $(this).find("ul").size() && ($(this).find("a:first").append("<b class='collapse-sign'>" + c.closedSign + "</b>"), "#" == $(this).find("a:first").attr("href") && $(this).find("a:first").click(function() {
+                    return ! 1
                 }))
             }),
-                d.find("li.active").each(function () {
+                d.find("li.active").each(function() {
                     $(this).parents("ul").slideDown(c.speed),
                         $(this).parents("ul").parent("li").find("b:first").html(c.openedSign),
                         $(this).parents("ul").parent("li").addClass("open")
                 }),
-                d.find("li a").click(function () {
-                    0 !== $(this).parent().find("ul").size() && (c.accordion && ($(this).parent().find("ul").is(":visible") || (parents = $(this).parent().parents("ul"), visible = d.find("ul:visible"), visible.each(function (a) {
+                d.find("li a").click(function() {
+                    0 !== $(this).parent().find("ul").size() && (c.accordion && ($(this).parent().find("ul").is(":visible") || (parents = $(this).parent().parents("ul"), visible = d.find("ul:visible"), visible.each(function(a) {
                         var b = !0;
-                        parents.each(function (c) {
+                        parents.each(function(c) {
                             return parents[c] == visible[a] ? (b = !1, !1) : void 0
                         }),
                         b && $(this).parent().find("ul") != visible[a] && $(visible[a]).slideUp(c.speed,
-                            function () {
+                            function() {
                                 $(this).parent("li").find("b:first").html(c.closedSign),
                                     $(this).parent("li").removeClass("open")
                             })
                     }))), $(this).parent().find("ul:first").is(":visible") && !$(this).parent().find("ul:first").hasClass("active") ? $(this).parent().find("ul:first").slideUp(c.speed,
-                        function () {
+                        function() {
                             $(this).parent("li").removeClass("open"),
                                 $(this).parent("li").find("b:first").delay(c.speed).html(c.closedSign)
                         }) : $(this).parent().find("ul:first").slideDown(c.speed,
-                        function () {
+                        function() {
                             $(this).parent("li").addClass("open"),
                                 $(this).parent("li").find("b:first").delay(c.speed).html(c.openedSign)
                         }))
                 })
         }
-    }), jQuery.fn.doesExist = function () {
+    }), jQuery.fn.doesExist = function() {
         return jQuery(this).length > 0
     },
     $.navAsAjax || $(".google_maps")) {
     var gMapsLoaded = !1;
-    window.gMapsCallback = function () {
+    window.gMapsCallback = function() {
         gMapsLoaded = !0,
             $(window).trigger("gMapsLoaded")
     },
-        window.loadGoogleMaps = function () {
+        window.loadGoogleMaps = function() {
             if (gMapsLoaded) return window.gMapsCallback();
             var a = document.createElement("script");
             a.setAttribute("type", "text/javascript"),
@@ -756,31 +738,31 @@ if ($.fn.extend({
         }
 }
 $.navAsAjax && ($("nav").length && checkURL(), $(document).on("click", 'nav a[href!="#"]',
-    function (a) {
+    function(a) {
         a.preventDefault();
         var b = $(a.currentTarget);
-        b.parent().hasClass("active") || b.attr("target") || ($.root_.hasClass("mobile-view-activated") ? ($.root_.removeClass("hidden-menu"), $("html").removeClass("hidden-menu-mobile-lock"), window.setTimeout(function () {
+        b.parent().hasClass("active") || b.attr("target") || ($.root_.hasClass("mobile-view-activated") ? ($.root_.removeClass("hidden-menu"), $("html").removeClass("hidden-menu-mobile-lock"), window.setTimeout(function() {
                 window.location.search ? window.location.href = window.location.href.replace(window.location.search, "").replace(window.location.hash, "") + "#" + b.attr("href") : window.location.hash = b.attr("href")
             },
             150)) : window.location.search ? window.location.href = window.location.href.replace(window.location.search, "").replace(window.location.hash, "") + "#" + b.attr("href") : window.location.hash = b.attr("href"))
     }), $(document).on("click", 'nav a[target="_blank"]',
-    function (a) {
+    function(a) {
         a.preventDefault();
         var b = $(a.currentTarget);
         window.open(b.attr("href"))
     }), $(document).on("click", 'nav a[target="_top"]',
-    function (a) {
+    function(a) {
         a.preventDefault();
         var b = $(a.currentTarget);
         window.location = b.attr("href")
     }), $(document).on("click", 'nav a[href="#"]',
-    function (a) {
+    function(a) {
         a.preventDefault()
-    }), $(window).on("hashchange", function () {
+    }), $(window).on("hashchange",function() {
     checkURL()
 })),
-    $("body").on("click", function (a) {
-        $('[rel="popover"]').each(function () {
+    $("body").on("click",function(a) {
+        $('[rel="popover"]').each(function() {
             $(this).is(a.target) || 0 !== $(this).has(a.target).length || 0 !== $(".popover").has(a.target).length || $(this).popover("hide")
         })
     });
@@ -797,169 +779,179 @@ function check_notification() {
     $.ajax({
         type: "POST",
         url: 'common/getNotification',
-        success: function (data) {
-            if (data.expire == false) {
+        success: function(data){
+            if(data.expire == false)
+            {
                 $this.text(data.total).addClass("bg-color-red bounceIn animated");
                 $('#ajax-notifications-time').text(data.time);
                 var labels = $('#logo-group > .ajax-dropdown > .btn-group > label');
-                $(labels[0]).find('.count').text('(' + data.msg + ')');
-                $(labels[1]).find('.count').text('(' + data.notify + ')');
-                $(labels[2]).find('.count').text('(' + data.feed + ')');
-                $(labels[3]).find('.count').text('(' + data.work + ')');
-            } else {
+                $(labels[0]).find('.count').text('('+data.msg+')');
+                $(labels[1]).find('.count').text('('+data.notify+')');
+                $(labels[2]).find('.count').text('('+data.feed+')');
+                $(labels[3]).find('.count').text('('+data.work+')');
+            }else{
                 window.location.href = 'public/login';
             }
         }
     });
 }
-$(document).ready(function () {
+$(document).ready(function() {
     notification_check();
     check_notification();
-    setInterval(check_notification, 300000);
-    $(".ajax-notifications").on('click', 'a', function (e) {
-        var a = $(this);
-        if ($(this).attr('class') == 'msg') {
+    setInterval(check_notification,300000);
+    $(".ajax-notifications").on('click','a',function(e){
+        var a  = $(this);
+        if($(this).attr('class') == 'msg')
+        {
             a.parent().parent().remove();
         }
         $('#activity').trigger('click');
     });
 });
 
-$('#ajax-notifications-loding-btn').on('click', function () {
+$('#ajax-notifications-loding-btn').on('click', function() {
     var $btn = $(this).button('loading');
     check_notification();
-    setTimeout(function () {
-        $btn.button('reset');
-    }, 1e3);
+    setTimeout(function() {$btn.button('reset');},1e3);
 });
 
 //Select Users
-function setup_select_user_widget(id, single, singleId, checkedId) {
-    var users = $('#select_user_' + id + " .p");
-    var allBtn = $('#select_all_user_' + id);
-    var department = $('#select_user_' + id + " .d");
+function setup_select_user_widget(id,single,singleId,checkedId)
+{
+    var users = $('#select_user_'+id +" .p");
+    var allBtn = $('#select_all_user_'+id);
+    var department = $('#select_user_'+id +" .d");
     var font_color = 'txt-color-red';
-    $('#select_user_' + id + " dd").mouseenter(function () {
-        $(this).addClass(font_color).prev().addClass(font_color);
-    }).mouseleave(function () {
-        $(this).removeClass(font_color).prev().removeClass(font_color);
+    $('#select_user_'+id +" dd").mouseenter(function() {
+        $( this ).addClass( font_color ).prev().addClass( font_color );
+    }).mouseleave(function() {
+        $( this ).removeClass( font_color ).prev().removeClass( font_color );
     });
-    $('#select_user_' + id + " dt").mouseenter(function () {
-        $(this).addClass(font_color).next().addClass(font_color);
-    }).mouseleave(function () {
-        $(this).removeClass(font_color).next().removeClass(font_color);
+    $('#select_user_'+id +" dt").mouseenter(function() {
+        $( this ).addClass( font_color ).next().addClass( font_color );
+    }).mouseleave(function() {
+        $( this ).removeClass( font_color ).next().removeClass( font_color );
     });
-    if (checkedId > 0) {
-        var el = $('#select_user_' + id + " .u_" + checkedId);
-        el.attr('checked', 'checked');
-        $('#' + singleId).attr('value', checkedId);
-        $('#input_' + singleId).attr('value', el.next().text());
-    } else {
+    if(checkedId>0)
+    {
+        var el = $('#select_user_'+id +" .u_"+checkedId);
+        el.attr( 'checked','checked' );
+        $('#'+singleId).attr('value',checkedId);
+        $('#input_'+singleId).attr('value',el.next().text());
+    }else{
         var ids = checkedId.split(',');
-        for (var i = 0; i < ids.length; i++) {
-            $('#select_user_' + id + " .u_" + ids[i]).attr('checked', 'checked');
+        for(var i=0;i<ids.length;i++)
+        {
+            $('#select_user_'+id +" .u_"+ids[i]).attr( 'checked','checked' );
         }
     }
-    var check = $('#select_user_' + id + ' dd input:checked');
-    var val = '', name = '';
-    check.each(function () {
-        val += (val == '' ? '' : ',') + $(this).val();
-        name += (name == '' ? '' : ', ') + $(this).next().text();
+    var check = $('#select_user_'+id+' dd input:checked');
+    var val='',name='';
+    check.each(function() {
+        val += (val==''?'':',') + $( this ).val();
+        name += (name==''?'':', ') + $( this ).next().text();
     });
-    $('#' + singleId).attr('value', val);
-    $('#input_' + singleId).attr('value', name);
-    $('#select_user_input_group_' + id).find("input[class='su_others']").attr('value', val);
-    users.click(function () {
-        if (Boolean(single) == true) {
-            users.attr('checked', null);
-            $(this).attr('checked', 'checked');
-        } else {
-            $(this).prop('checked');
+    $('#'+singleId).attr('value',val);
+    $('#input_'+singleId).attr('value',name);
+    $('#select_user_input_group_'+id).find("input[class='su_others']").attr('value',val);
+    users.click(function(){
+        if(Boolean(single)==true){
+            users.attr( 'checked',null );
+            $(this).attr( 'checked','checked' );
+        }else{
+            $(this).prop( 'checked' );
         }
     });
-    allBtn.click(function () {
-        if (Boolean(single) != true) {
-            if ($(this).attr('checked') == 'checked') {
-                users.attr('checked', 'checked');
-                department.attr('checked', 'checked');
-            } else {
-                users.removeAttr('checked');
-                department.removeAttr('checked');
+    allBtn.click(function(){
+        if(Boolean(single)!=true){
+            if($(this).attr( 'checked') == 'checked')
+            {
+                users.attr( 'checked','checked' );
+                department.attr( 'checked','checked' );
+            }else{
+                users.removeAttr( 'checked' );
+                department.removeAttr( 'checked' );
             }
         }
     });
-    department.click(function () {
-        if ($(this).attr('checked') == 'checked') {
-            $(this).parent().parent().parent().next().find('.p').attr('checked', 'checked');
-        } else {
+    department.click(function(){
+        if($(this).attr('checked') == 'checked'){
+            $(this).parent().parent().parent().next().find('.p').attr( 'checked','checked' );
+        }else{
             $(this).parent().parent().parent().next().find('.p').removeAttr('checked');
         }
     });
-    $('#search_btn_' + id).click(function () {
-        var val = $('#search_field_' + id).val();
-        users.removeAttr('checked');
-        if (val != '') {
-            $("#select_user_" + id + " .checkbox-inline:contains('" + val + "')").find('input').attr('checked', 'checked');
+    $('#search_btn_'+id).click(function(){
+        var val = $('#search_field_'+id).val();
+        users.removeAttr( 'checked' );
+        if(val != '')
+        {
+            $("#select_user_"+id +" .checkbox-inline:contains('"+val+"')").find('input').attr( 'checked','checked' );
         }
 
     });
-    $('#select_user_submit_btn_' + id).click(function () {
-        var check = $('#select_user_' + id + ' dd input:checked');
-        if (Boolean(single) == true) {
-            if (check.length > 1) {
-                small_box_notify('ֻ��ѡ��һ���û�');
+    $('#select_user_submit_btn_'+id).click(function(){
+        var check = $('#select_user_'+id+' dd input:checked');
+        if(Boolean(single)==true)
+        {
+            if(check.length > 1){
+                small_box_notify('鍙兘閫夋嫨涓€涓敤鎴�');
                 return;
             }
             var val = check.val();
-            if (val > 0) {
-                $('#' + singleId).attr('value', val);
-                $('#input_' + singleId).attr('value', check.next().text());
-                $('#select_user_input_group_' + id).find("input[class='su_others']").attr('value', val);
+            if(val>0)
+            {
+                $('#'+singleId).attr('value',val);
+                $('#input_'+singleId).attr('value',check.next().text());
+                $('#select_user_input_group_'+id).find("input[class='su_others']").attr('value',val);
             }
-        } else {
-            var val = '', name = '';
-            check.each(function () {
-                val += (val == '' ? '' : ',') + $(this).val();
-                name += (name == '' ? '' : ', ') + $(this).next().text();
+        }else{
+            var val='',name='';
+            check.each(function() {
+                val += (val==''?'':',') + $( this ).val();
+                name += (name==''?'':', ') + $( this ).next().text();
             });
-            $('#' + singleId).attr('value', val);
-            $('#input_' + singleId).attr('value', name);
-            $('#select_user_input_group_' + id).find("input[class='su_others']").attr('value', val);
+            $('#'+singleId).attr('value',val);
+            $('#input_'+singleId).attr('value',name);
+            $('#select_user_input_group_'+id).find("input[class='su_others']").attr('value',val);
         }
         $('body').removeClass('modal-open');
-        $('#' + singleId).trigger('confirm');
+        $('#'+singleId).trigger('confirm');
     });
-    $('#select_user_empty_btn_' + id).click(function () {
-        $('#select_user_input_group_' + id).find("input").attr('value', '');
-        $('#' + singleId).attr('value', '');
-        $('#input_' + singleId).attr('value', '');
+    $('#select_user_empty_btn_'+id).click(function(){
+        $('#select_user_input_group_'+id).find("input").attr('value','');
+        $('#'+singleId).attr('value','');
+        $('#input_'+singleId).attr('value','');
     });
 }
-function form_ajax_submit(form, id, action) {
+function form_ajax_submit(form,id,action)
+{
     //SmartNotification Bug 2015-07-07 insert code
     ExistMsg = 0;
-    $('#' + id).on('click', function () {
+    $('#'+id).on('click', function(){
         $.SmartMessageBox({
-            title: "<i class='fa fa-lightbulb-o txt-color-orangeDark'></i> ȷ�� <span class='txt-color-orangeDark'></span> ?",
-            content: "��ȷ��Ҫִ�в�����",
-            buttons: '[ȡ��][ȷ��]'
+            title : "<i class='fa fa-lightbulb-o txt-color-orangeDark'></i> 纭畾 <span class='txt-color-orangeDark'></span> ?",
+            content : "鎮ㄧ‘瀹氳鎵ц鎿嶄綔鍚楋紵",
+            buttons : '[鍙栨秷][纭畾]'
 
-        }, function (ButtonPressed) {
-            if (ButtonPressed == "ȷ��") {
-                $('#' + id).attr('disabled', 'disabled');
+        }, function(ButtonPressed) {
+            if (ButtonPressed == "纭畾") {
+                $('#'+id).attr('disabled','disabled');
                 $.ajax({
                     type: "POST",
                     url: action,
-                    data: form != '' ? $('#' + form).serialize() : '',
-                    success: function (data) {
+                    data: form!=''?$('#'+form).serialize():'',
+                    success: function(data){
                         small_box_notify(data.info);
-                        $('#' + id).removeAttr('disabled');
-                        if (data.status == 1) {
-                            if (jQuery.type(data.url) === 'string') {
-                                if (data.redirect == true) {
-                                    window.location.href = '#' + data.url;
-                                } else {
-                                    loadURL(data.url, $('#content'));
+                        $('#'+id).removeAttr('disabled');
+                        if(data.status == 1){
+                            if(jQuery.type(data.url) === 'string' )
+                            {
+                                if(data.redirect == true)
+                                {
+                                    window.location.href = '#'+data.url;
+                                }else{
+                                    loadURL(data.url,$('#content'));
                                 }
                             }
                         }
@@ -969,6 +961,4 @@ function form_ajax_submit(form, id, action) {
         });
     });
 }
-function small_box_notify(msg) {
-    $.smallBox({title: "��ʾ", content: msg, color: "#5384AF", icon: "fa fa-bell swing animated", timeout: 3000});
-}
+function small_box_notify(msg){$.smallBox({title : "鎻愮ず",	content : msg,	color : "#5384AF",	icon : "fa fa-bell swing animated",	timeout : 3000});}

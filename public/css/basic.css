@@ -1,4 +1,4 @@
-/*¹Ç¼Ü*/
+/*éª¨æž¶*/
 body,button,input,select,textarea,table{font-family:\5FAE\8F6F\96C5\9ED1,Arial !important;}
 html{position:relative;min-height:100%;background:#ededed;color:#000;}
 body{width:100%;min-height:100%;background:#ededed;}
@@ -103,14 +103,15 @@ body{width:100%;min-height:100%;background:#ededed;}
 .minified #left_panel nav > ul > li > ul > li > ul > li > a{padding:7px 10px 7px 30px;}
 
 
-
-
+#main #ribbon .breadcrumb{padding:0 0 0 14px;color:#BBB;line-height:40px;margin-bottom:0;list-style:none;background:none;border-radius:0;  }
+#main #ribbon .breadcrumb li i{margin-right:3px;}
+#main #ribbon .breadcrumb li:last-child{color:#E4E4E4;}
 
 
 @media only screen and (min-width:0px) and (max-width:767px) {
     #page_header .right_side .toggleMenu_btn{display:block;}
     #main{margin-left:0;}
-    #left_panel{margin-left:-220px;}
+    #left_panel{margin-left:-220px;background:#3a3633;}
     #left_panel .minifyBtn{display:none;}
     #page_footer .inside{padding-left:0;text-align:center;}
 }
