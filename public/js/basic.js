@@ -59,7 +59,7 @@ $(window).on('hashchange', function () {
     checkURL();
 });
 
-//
+//三个按钮
 (function () {
     var $left_panel = $('#left_panel');
     var $body = $('body');
@@ -84,7 +84,7 @@ $(window).on('hashchange', function () {
     });
 })();
 
-//
+//主导航
 (function () {
     var $nav = $('#left_panel nav');
     var $a = $nav.find('a');
