@@ -1,16 +1,20 @@
 function checkURL() {
-    var hash = location.href.split("#").splice(1).join("");
+    var arr = location.href.split("#");
+    var hash = '';
+    if (arr.length > 1) {
+        hash = arr[1];
+    }
     if (hash !== '') {
         loadURL(hash);
     } else {
-        location.hash = 'desktop';
-        checkURL();
+        window.location.hash = 'desktop';
+        loadURL('desktop');
     }
 }
 function loadURL(url) {
     var content = $('#content');
     var target = '/tpl/' + url;
-    console.log(target);
+    //console.log(target);
     $.ajax({
         type: 'get',
         url: target,
