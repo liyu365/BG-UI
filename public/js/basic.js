@@ -32,7 +32,7 @@ function loadURL(url) {
         data: '',
         dataType: 'html',
         beforeSend: function () {
-            content.html('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>');
+            content.html('<h1 class="ajax-loading-animation"><i class="fa fa-refresh fa-spin"></i> Loading...</h1>');
         },
         success: function (returnData) {
             setTimeout(function () {
@@ -46,7 +46,7 @@ function loadURL(url) {
             }, 200);
         },
         error: function () {
-            content.html('<h4 class="ajax-loading-error"><i class="fa fa-warning"></i> Error 404! Page not found.</h4>')
+            content.html('<h4 class="ajax-loading-error"><i class="fa fa-warning"></i> Error 404! 页面不存在</h4>')
         }
     })
 }
