@@ -157,9 +157,10 @@ $(window).on('hashchange', function () {
     });
 })();
 
+//ajax弹出框
 (function () {
-    var $modal_content_empty = $("#modal_content_empty");
-    $(document).on('click', '.J_modal', function () {
+    var $modal_ajax_content = $("#modal_ajax_content");
+    $(document).on('click', '.J_ajax_content_modal', function () {
         var $btn = $(this);
         if (typeof $btn.attr('data-href') !== 'undefined') {
             $.ajax({
@@ -171,16 +172,39 @@ $(window).on('hashchange', function () {
                 beforeSend: function () {
                 },
                 success: function (returnData) {
-                    $modal_content_empty.find('.modal-content').html(returnData);
-                    $modal_content_empty.modal('show');
+                    $modal_ajax_content.find('.modal-content').html(returnData);
+                    $modal_ajax_content.modal('show');
                 },
                 error: function () {
-                    alert("error");
+                    alert("未找到模板");
                 }
             });
         } else {
-
+            console.log("请配置'data-href'属性");
         }
-    })
+    });
 })();
 
+//确认弹出框
+(function () {
+    var $modal_confirm = $("#modal_confirm");
+    var target = '';
+    $(document).on('click', '.J_confirm_modal', function () {
+        var $btn = $(this);
+        var tip = '确认吗？';
+        if (typeof $btn.attr('data-tip') !== 'undefined') {
+            tip = $btn.attr('data-tip');
+        }
+        target = $btn.attr('data-target');
+        $modal_confirm.find('.modal-body').html('<h4 style="text-align:center;">' + tip + '</h4>');
+        $modal_confirm.modal({
+            backdrop: 'static'
+        });
+    });
+    $modal_confirm.on('click', '.J_confirm_btn', function () {
+        console.log(target);
+        setTimeout(function () {
+            $modal_confirm.modal('hide');
+        }, 2000);
+    });
+})();

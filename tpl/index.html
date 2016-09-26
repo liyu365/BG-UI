@@ -84,8 +84,19 @@
     </footer>
 
     <!-- Modal -->
-    <div class="modal fade" id="modal_content_empty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal_ajax_content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog"><div class="modal-content"></div></div>
+    </div>
+    <div class="modal fade" id="modal_confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body"></div>
+                <div class="modal-footer" style="text-align:center;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger J_confirm_btn"><i class="fa fa-refresh fa-spin"></i> 确定</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="/public/js/vendor/jquery.min.js"></script>
