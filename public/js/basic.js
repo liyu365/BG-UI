@@ -29,6 +29,7 @@ function loadURL(url) {
     $.ajax({
         type: 'get',
         url: target,
+        cache: false,
         data: '',
         dataType: 'html',
         beforeSend: function () {
@@ -154,5 +155,32 @@ $(window).on('hashchange', function () {
             $body.removeClass('minified');
         }
     });
+})();
+
+(function () {
+    var $modal_content_empty = $("#modal_content_empty");
+    $(document).on('click', '.J_modal', function () {
+        var $btn = $(this);
+        if (typeof $btn.attr('data-href') !== 'undefined') {
+            $.ajax({
+                type: 'get',
+                url: $btn.attr('data-href'),
+                cache: false,
+                data: '',
+                dataType: 'html',
+                beforeSend: function () {
+                },
+                success: function (returnData) {
+                    $modal_content_empty.find('.modal-content').html(returnData);
+                    $modal_content_empty.modal('show');
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        } else {
+
+        }
+    })
 })();
 
