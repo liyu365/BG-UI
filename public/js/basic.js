@@ -208,3 +208,16 @@ $(window).on('hashchange', function () {
         }, 2000);
     });
 })();
+
+(function () {
+    $(document).on('click', '.J_ajaxSubmitBtn', function () {
+        var $btn = $(this);
+        var $from = null;
+        $from = $btn.parent().parent();
+        console.log("asdasd");
+        new AjaxForm($from, {
+            url: '/api/ajaxReturn.php',
+            subBtn: $from.find(".J_ajaxSubmitBtn")
+        })
+    });
+})();
