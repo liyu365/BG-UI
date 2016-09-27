@@ -1,3 +1,7 @@
+window.liyu_conf = {
+    defaultHash: 'desktop.html',
+    baseURL: '/tpl/'
+};
 function checkURL() {
     var arr = location.href.split("#");
     var hash = '';
@@ -7,25 +11,13 @@ function checkURL() {
     if (hash !== '') {
         loadURL(hash);
     } else {
-        hash = 'desktop';
-        window.location.hash = hash;
-        loadURL('desktop');
+        loadURL(liyu_conf.defaultHash);
     }
-    //console.log($('nav li:has(a[href="' + '#' + hash + '"])'));
-    var title = '';
-    var $breadcrumb = $('#ribbon .breadcrumb');
-    title = $('nav a[href="' + '#' + hash + '"]').find('span').text();
-    if (hash != 'desktop' && title != '') {
-        $breadcrumb.html('<li><i class="fa fa-home"></i>工作台</li><li>' + title + '</li>');
-    } else {
-        $breadcrumb.html('<li><i class="fa fa-home"></i>工作台</li>');
-    }
-    console.log(title);
+
 }
 function loadURL(url) {
     var content = $('#content');
-    var target = '/tpl/' + url;
-    //console.log(target);
+    var target = liyu_conf.baseURL + url;
     $.ajax({
         type: 'get',
         url: target,
@@ -33,7 +25,17 @@ function loadURL(url) {
         data: '',
         dataType: 'html',
         beforeSend: function () {
+            window.location.hash = url;
             content.html('<h1 class="ajax-loading-animation"><i class="fa fa-refresh fa-spin"></i> Loading...</h1>');
+            var title = '';
+            var $breadcrumb = $('#ribbon .breadcrumb');
+            title = $('nav a[href="' + '#' + url + '"]').find('span').text();
+            if (url != liyu_conf.defaultHash && title != '') {
+                $breadcrumb.html('<li><i class="fa fa-home"></i>工作台</li><li>' + title + '</li>');
+            } else {
+                $breadcrumb.html('<li><i class="fa fa-home"></i>工作台</li>');
+            }
+            //console.log(title);
         },
         success: function (returnData) {
             setTimeout(function () {
@@ -47,11 +49,10 @@ function loadURL(url) {
             }, 200);
         },
         error: function () {
-            content.html('<h4 class="ajax-loading-error"><i class="fa fa-warning"></i> Error 404! 页面不存在</h4>')
+            content.html('<h4 class="ajax-loading-error"><i class="fa fa-warning"></i> Error 404! 页面不存在</h4>');
         }
     })
 }
-
 checkURL();
 $(document).on("click", 'nav a[href="#"]', function (e) {
     e.preventDefault();
@@ -60,7 +61,7 @@ $(window).on('hashchange', function () {
     checkURL();
 });
 
-//三个按钮
+//header三个按钮
 (function () {
     var $left_panel = $('#left_panel');
     var $body = $('body');
@@ -157,7 +158,7 @@ $(window).on('hashchange', function () {
     });
 })();
 
-//ajax弹出框
+//ajax内容弹出框
 (function () {
     var $modal_ajax_content = $("#modal_ajax_content");
     $(document).on('click', '.J_ajax_content_modal', function () {
@@ -209,15 +210,22 @@ $(window).on('hashchange', function () {
     });
 })();
 
+//J_ajaxSubmitBtn绑定事件
 (function () {
     $(document).on('click', '.J_ajaxSubmitBtn', function () {
         var $btn = $(this);
         var $from = null;
         $from = $btn.parent().parent();
-        console.log("asdasd");
         new AjaxForm($from, {
-            url: '/api/ajaxReturn.php',
-            subBtn: $from.find(".J_ajaxSubmitBtn")
-        })
+            type: $from.attr("method"),  //提交方式
+            url: $from.attr("action"),  //提交地址
+            subBtn: $from.find(".J_ajaxSubmitBtn"),  //提交按钮
+            enterSend: $from.attr("data-enterSend") === 'on',  //是否支持回车提交
+            sendingText: $from.attr("data-sendingText"),  //提交中的按钮文字
+            useDefaultCallBack: $from.attr("data-useDefaultCallBack") !== 'off', //是否调用默认回调函数(只要值不为'off'都调用)
+            callBack: typeof $from.attr("data-callBack") !== 'undefined' ? eval('(' + 'callback.' + $from.attr("data-callBack") + ')') : false,  //自定义回调函数
+            validateInt: typeof $from.attr("data-validate-init") !== 'undefined' ? eval('(' + 'validate.' + $from.attr("data-validate-init") + ')') : false,  //初始验证函数
+            validateFinally: typeof $from.attr("data-validate-finally") !== 'undefined' ? eval('(' + 'validate.' + $from.attr("data-validate-finally") + ')') : false  //最终验证函数
+        });
     });
 })();
