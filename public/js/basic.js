@@ -230,7 +230,7 @@ $(window).on('hashchange', function () {
             sendingText: typeof $from.attr("data-sendingText") !== 'undefined' ? $from.attr("data-sendingText") : '提交中...',  //提交中的按钮文字
             useDefaultCallBack: $from.attr("data-useDefaultCallBack") !== 'off', //是否调用默认回调函数(只要值不为'off'都调用)
             callBack: typeof $from.attr("data-callBack") !== 'undefined' ? eval('(' + $from.attr("data-callBack") + ')') : false,  //自定义回调函数
-            validateFinally: typeof $from.attr("data-validate-finally") !== 'undefined' ? eval('(' + $from.attr("data-validate-finally") + ')') : false  //最终验证函数
+            validate: typeof $from.attr("data-validate") !== 'undefined' ? eval('(' + $from.attr("data-validate") + ')') : false  //最终验证函数
         });
     });
 })();

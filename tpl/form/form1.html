@@ -9,11 +9,11 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form class="form-inline" role="form">
+                                    <form class="form-inline" role="form" method="get" action="/api/ajaxReturn.php" data-validate="validate1">
                                         <div class="form-group">
                                             <label>新闻分类</label>
                                             <select name="pid" class="form-control">
-                                                <option value="0">全选</option>
+                                                <option value="0">请选择</option>
                                                 <option value="1">行业新闻</option>
                                                 <option value="2">企业新闻</option>
                                             </select>
@@ -21,11 +21,11 @@
                                         <span class="gap"></span>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox"> 是否通过审查
+                                                <input type="checkbox" name="audit" value="1"> 是否通过审查
                                             </label>
                                         </div>
                                         <span class="gap"></span>
-                                        <button type="button" class="btn btn-primary">查询</button>
+                                        <button type="button" class="btn btn-primary J_ajaxSubmitBtn">查询</button>
                                     </form>
                                 </div>
                             </div>
@@ -42,11 +42,11 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form class="form-horizontal" role="form" method="get" action="/api/ajaxReturn.php">
+                                    <form class="form-horizontal" role="form" method="get" action="/api/ajaxReturn.php" data-validate="validate2">
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">新闻标题</label>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" placeholder="新闻标题">
+                                                <input type="text" class="form-control" placeholder="新闻标题" name="title">
                                             </div>
                                             <p class="col-md-7 help-block">必填</p>
                                         </div>
@@ -54,12 +54,13 @@
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">新闻分类</label>
                                             <div class="col-md-3">
-                                                <select class="form-control">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
+                                                <select class="form-control" name="category">
+                                                    <option value="0">请选择</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
                                                 </select>
                                             </div>
                                             <p class="col-md-7 help-block">必填</p>
@@ -68,30 +69,23 @@
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">作者</label>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" placeholder="作者">
+                                                <input type="text" class="form-control" placeholder="作者" name="author">
                                             </div>
                                             <p class="col-md-7 help-block">必填</p>
                                         </div>
                                         <hr/>
-                                        <div class="form-group">
-                                            <label class="col-md-2 control-label">作者</label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" placeholder="作者">
-                                            </div>
-                                            <p class="col-md-7 help-block">必填</p>
-                                        </div>
                                         <hr/>
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">是否审核通过</label>
                                             <div class="col-md-3">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optionsRadios" value="option1" checked>通过
+                                                        <input type="radio" name="audit" value="1" checked>通过
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optionsRadios" value="option2">未通过
+                                                        <input type="radio" name="audit" value="2">未通过
                                                     </label>
                                                 </div>
                                             </div>
@@ -102,14 +96,14 @@
                                             <div class="col-sm-offset-2 col-md-10">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> Remember me
+                                                        <input type="checkbox" name="remember" value="1"> 记住我
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr/>
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label">是否审核通过</label>
+                                            <label class="col-md-2 control-label">简介</label>
                                             <div class="col-md-10">
                                                 <textarea class="form-control"></textarea>
                                             </div>
@@ -131,3 +125,23 @@
     </div>
 
 </div>
+
+
+<script>
+    function validate1($from) {
+        var pid = $from.find('select[name="pid"]');
+        if (pid.val()==0) {
+            return '请选择分类';
+        }
+
+        return true;
+    }
+    function validate2($from) {
+        var title = $from.find('input[name="title"]');
+        if ($.trim(title.val()) == '') {
+            return '新闻标题不能为空';
+        }
+
+        return true;
+    }
+</script>

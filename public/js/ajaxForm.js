@@ -28,10 +28,10 @@ AjaxForm.prototype.init = function (options) {
     _this.defaultCallBack = function (returnData) {
         if (_this.useDefaultCallBack) {
             var $tip = null;
-            if ($.trim(_this.returnData.state) == 'success') {
+            if ($.trim(returnData.state) == 'success') {
                 $tip = $('<span class="ajaxForm_tip_success"><i class="fa fa-check-circle-o"></i> 提交成功</span>');
             } else {
-                var tipText = _this.returnData.message ? _this.returnData.message : '提交失败';
+                var tipText = returnData.message ? returnData.message : '提交失败';
                 $tip = $('<span class="ajaxForm_tip_warning"><i class="fa fa-exclamation-circle"></i> ' + tipText + '</span>');
             }
             if (_this.$form.parent().hasClass('modal-content')) {
@@ -44,15 +44,15 @@ AjaxForm.prototype.init = function (options) {
             setTimeout(function () {
                 $tip.animate({"opacity": 0}, {
                         queue: false, duration: 500, complete: function () {
-                            if ($.trim(_this.returnData.state) == 'success') {
+                            if ($.trim(returnData.state) == 'success') {
                                 $("#modal_ajax_content").modal('hide');
                             }
                             $tip.remove();
                             _this.$subBtn.removeClass('subBtn_unable');
-                            if ($.trim(_this.returnData.state) == 'success' && _this.returnData.refresh === true) {
-                                if ($.trim(_this.returnData.referer)) {
+                            if ($.trim(returnData.state) == 'success' && returnData.refresh === true) {
+                                if ($.trim(returnData.referer)) {
                                     //根据返回的hash加载页面
-                                    loadURL($.trim(_this.returnData.referer));
+                                    loadURL($.trim(returnData.referer));
                                 } else {
                                     //刷新本页
                                     checkURL();
@@ -84,7 +84,7 @@ AjaxForm.prototype.init = function (options) {
     //获取自定义回调函数名，它和默认回调并不冲突，也就是说只要定义了自定义回调函数就一定会被执行
     _this.callBack = opts.callBack;
     //获取自定义'最终'验证函数名
-    _this.validateFinally = opts.validateFinally;
+    _this.validate = opts.validate;
     //是否执行默认回调
     _this.useDefaultCallBack = opts.useDefaultCallBack;
 };
@@ -93,11 +93,14 @@ AjaxForm.prototype.send = function () {
     var _this = this;
     if (!_this.sending) {
         //调用'最终'验证函数
-        if (typeof _this.validateFinally === 'function') {
-            var vali = _this.validateFinally(_this.$form);
-            if (!vali) {
-                //如果验证函数传回来的是false，则立刻跳出程序
-                _this.$subBtn.removeClass('subBtn_unable');
+        if (typeof _this.validate === 'function') {
+            var vali = _this.validate(_this.$form);
+            if (vali !== true) {
+                //如果验证函数传回来的不是true，则利用默认回调函数提示错误信息
+                _this.defaultCallBack({
+                    state: 'fail',
+                    message: vali
+                });
                 return false;
             }
         }
@@ -118,6 +121,7 @@ AjaxForm.prototype.send = function () {
         $.ajax({
             type: _this.type,
             url: _this.url,
+            cache: false,
             data: _this.data,
             dataType: _this.dataType,
             success: function (returnData) {
@@ -140,6 +144,7 @@ AjaxForm.prototype.send = function () {
             },
             error: function () {
                 alert('请求失败!!!!!!');
+                _this.$subBtn.removeClass('subBtn_unable');
                 //重置发送按钮状态
                 if (_this.$subBtn[0].nodeName.toLowerCase() == 'input') {
                     _this.$subBtn.val(_this.subBtnText);
