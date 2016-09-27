@@ -69,7 +69,9 @@ AjaxForm.prototype.init = function (options) {
                                     }
                                 }
                             }
-                            $modals.modal('hide');
+                            if ($.trim(returnData.state) == 'success'){
+                                $modals.modal('hide');
+                            }
                             $tip.remove();
                             _this.$subBtn.removeClass('subBtn_unable');
                         }
