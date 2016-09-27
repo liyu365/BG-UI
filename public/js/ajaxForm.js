@@ -44,7 +44,9 @@ AjaxForm.prototype.init = function (options) {
             setTimeout(function () {
                 $tip.animate({"opacity": 0}, {
                         queue: false, duration: 500, complete: function () {
-                            $("#modal_ajax_content").modal('hide');
+                            if ($.trim(_this.returnData.state) == 'success') {
+                                $("#modal_ajax_content").modal('hide');
+                            }
                             $tip.remove();
                             _this.$subBtn.removeClass('subBtn_unable');
                             if ($.trim(_this.returnData.state) == 'success' && _this.returnData.refresh === true) {
