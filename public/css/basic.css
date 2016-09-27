@@ -135,3 +135,6 @@ body{width:100%;min-height:100%;background:#ededed;}
 .btn-group i{margin-right:6px;}
 hr{margin:15px 0;border-top:1px dashed #e7eaec;}
 .help-block{margin-bottom:0;}
+
+.J_ajaxSubmitBtn i{display:none;}
+.J_ajaxSubmitBtn.subBtn_sending i{display:inline-block;}

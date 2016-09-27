@@ -3,8 +3,6 @@ function AjaxForm($form, options) {
     _this.$form = $form;
     //初始化变量
     _this.init(options);
-    //调用初始验证函数
-    typeof _this.validateInt === 'function' && _this.validateInt(_this.$form);
     //监听提交按钮点击事件
     _this.send();
     //监听回车事件
@@ -29,23 +27,31 @@ AjaxForm.prototype.init = function (options) {
     //默认的回调函数
     _this.defaultCallBack = function (returnData) {
         if (_this.useDefaultCallBack) {
-            /*_this.dialog = popBox({
-                title: '提示',
-                content: message,
-                ok: true,
-                init: function () {
-                    _this.$subBtn.addClass('subBtn_unable');  //弹出框弹出后，让表单的提交动作失效，防止重复弹出
-                },
-                close: function () {
-                    _this.$subBtn.removeClass('subBtn_unable');  //关闭弹出框后，恢复表单的提交动作
-                    if (_this.referer) {
-                        setTimeout(function () {
-                            window.location.href = _this.referer;
-                        }, 10);
-                    }
-                }
-            });*/
-            $("#modal_ajax_content").modal('hide');
+            if ($.trim(_this.returnData.state) == 'success') {
+                var $tip = $('<span>提交成功</span>');
+                _this.$subBtn.after($tip);
+                setTimeout(function () {
+                    $tip.animate({"opacity": 0}, {
+                            queue: false, duration: 500, complete: function () {
+                                $("#modal_ajax_content").modal('hide');
+                                $tip.remove();
+                                _this.$subBtn.removeClass('subBtn_unable');
+                                if (_this.returnData.refresh === true) {
+                                    if ($.trim(_this.returnData.referer)) {
+                                        //根据返回的hash加载页面
+                                        loadURL($.trim(_this.returnData.referer));
+                                    } else {
+                                        //刷新本页
+                                        checkURL();
+                                    }
+                                }
+                            }
+                        }
+                    );
+                }, 1000);
+            }else{
+
+            }
         }
     };
 
@@ -67,8 +73,6 @@ AjaxForm.prototype.init = function (options) {
     _this.sendingText = opts.sendingText;
     //获取自定义回调函数名，它和默认回调并不冲突，也就是说只要定义了自定义回调函数就一定会被执行
     _this.callBack = opts.callBack;
-    //获取自定义'初始化'验证函数名
-    _this.validateInt = opts.validateInt;
     //获取自定义'最终'验证函数名
     _this.validateFinally = opts.validateFinally;
     //是否执行默认回调
@@ -77,12 +81,13 @@ AjaxForm.prototype.init = function (options) {
 
 AjaxForm.prototype.send = function () {
     var _this = this;
-    if (!_this.sending && !_this.$subBtn.hasClass('subBtn_unable')) {
+    if (!_this.sending) {
         //调用'最终'验证函数
         if (typeof _this.validateFinally === 'function') {
             var vali = _this.validateFinally(_this.$form);
             if (!vali) {
                 //如果验证函数传回来的是false，则立刻跳出程序
+                _this.$subBtn.removeClass('subBtn_unable');
                 return false;
             }
         }
@@ -108,25 +113,11 @@ AjaxForm.prototype.send = function () {
             success: function (returnData) {
                 _this.returnData = returnData;
                 console.log(_this.returnData);
+                _this.defaultCallBack(_this.returnData);  //执行默认回调
+                typeof _this.callBack === 'function' && _this.callBack(_this.returnData, _this.$form); //执行自定义回调
                 if ($.trim(_this.returnData.state) == 'success') {
-                    _this.defaultCallBack(_this.returnData);  //执行默认回调
-                    typeof _this.callBack === 'function' && _this.callBack(_this.returnData, _this.$form); //执行自定义回调
-                    if (_this.returnData.refresh === true) {
-                        if($.trim(_this.returnData.referer)){
-                            //根据返回的hash加载页面
-                            loadURL($.trim(_this.returnData.referer));
-                        }else{
-                            //刷新本页
-                            checkURL();
-                        }
-                    }
                     //重置表单
                     _this.$form[0].reset();
-                    //调用初始验证函数
-                    typeof _this.validateInt === 'function' && _this.validateInt(_this.$form);
-                } else {
-                    _this.defaultCallBack(_this.returnData);  //执行默认回调
-                    typeof _this.callBack === 'function' && _this.callBack(_this.returnData, _this.$form); //执行自定义回调
                 }
                 //重置发送按钮状态
                 if (_this.$subBtn[0].nodeName.toLowerCase() == 'input') {

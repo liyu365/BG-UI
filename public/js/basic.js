@@ -214,18 +214,23 @@ $(window).on('hashchange', function () {
 (function () {
     $(document).on('click', '.J_ajaxSubmitBtn', function () {
         var $btn = $(this);
-        var $from = null;
-        $from = $btn.parent().parent();
+        if ($btn.hasClass('subBtn_unable')) {
+            return;
+        }
+        $btn.addClass('subBtn_unable');
+        var $from = $btn.parent();
+        while ($from[0].nodeName.toLowerCase() !== 'form') {
+            $from = $from.parent();
+        }
         new AjaxForm($from, {
             type: $from.attr("method"),  //提交方式
             url: $from.attr("action"),  //提交地址
             subBtn: $from.find(".J_ajaxSubmitBtn"),  //提交按钮
             enterSend: $from.attr("data-enterSend") === 'on',  //是否支持回车提交
-            sendingText: $from.attr("data-sendingText"),  //提交中的按钮文字
+            sendingText: typeof $from.attr("data-sendingText") !== 'undefined' ? $from.attr("data-sendingText") : '提交中...',  //提交中的按钮文字
             useDefaultCallBack: $from.attr("data-useDefaultCallBack") !== 'off', //是否调用默认回调函数(只要值不为'off'都调用)
-            callBack: typeof $from.attr("data-callBack") !== 'undefined' ? eval('(' + 'callback.' + $from.attr("data-callBack") + ')') : false,  //自定义回调函数
-            validateInt: typeof $from.attr("data-validate-init") !== 'undefined' ? eval('(' + 'validate.' + $from.attr("data-validate-init") + ')') : false,  //初始验证函数
-            validateFinally: typeof $from.attr("data-validate-finally") !== 'undefined' ? eval('(' + 'validate.' + $from.attr("data-validate-finally") + ')') : false  //最终验证函数
+            callBack: typeof $from.attr("data-callBack") !== 'undefined' ? eval('(' + $from.attr("data-callBack") + ')') : false,  //自定义回调函数
+            validateFinally: typeof $from.attr("data-validate-finally") !== 'undefined' ? eval('(' + $from.attr("data-validate-finally") + ')') : false  //最终验证函数
         });
     });
 })();
