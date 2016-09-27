@@ -27,31 +27,39 @@ AjaxForm.prototype.init = function (options) {
     //默认的回调函数
     _this.defaultCallBack = function (returnData) {
         if (_this.useDefaultCallBack) {
+            var $tip = null;
             if ($.trim(_this.returnData.state) == 'success') {
-                var $tip = $('<span>提交成功</span>');
-                _this.$subBtn.after($tip);
-                setTimeout(function () {
-                    $tip.animate({"opacity": 0}, {
-                            queue: false, duration: 500, complete: function () {
-                                $("#modal_ajax_content").modal('hide');
-                                $tip.remove();
-                                _this.$subBtn.removeClass('subBtn_unable');
-                                if (_this.returnData.refresh === true) {
-                                    if ($.trim(_this.returnData.referer)) {
-                                        //根据返回的hash加载页面
-                                        loadURL($.trim(_this.returnData.referer));
-                                    } else {
-                                        //刷新本页
-                                        checkURL();
-                                    }
+                $tip = $('<span class="ajaxForm_tip_success"><i class="fa fa-check-circle-o"></i> 提交成功</span>');
+            } else {
+                var tipText = _this.returnData.message ? _this.returnData.message : '提交失败';
+                $tip = $('<span class="ajaxForm_tip_warning"><i class="fa fa-exclamation-circle"></i> ' + tipText + '</span>');
+            }
+            if (_this.$form.parent().hasClass('modal-content')) {
+                $tip.css('float', 'left');
+                $tip.css('marginTop', 5);
+            } else {
+                $tip.css('marginLeft', 10);
+            }
+            _this.$subBtn.after($tip);
+            setTimeout(function () {
+                $tip.animate({"opacity": 0}, {
+                        queue: false, duration: 500, complete: function () {
+                            $("#modal_ajax_content").modal('hide');
+                            $tip.remove();
+                            _this.$subBtn.removeClass('subBtn_unable');
+                            if ($.trim(_this.returnData.state) == 'success' && _this.returnData.refresh === true) {
+                                if ($.trim(_this.returnData.referer)) {
+                                    //根据返回的hash加载页面
+                                    loadURL($.trim(_this.returnData.referer));
+                                } else {
+                                    //刷新本页
+                                    checkURL();
                                 }
                             }
                         }
-                    );
-                }, 1000);
-            }else{
-
-            }
+                    }
+                );
+            }, 1000);
         }
     };
 
