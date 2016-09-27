@@ -44,20 +44,34 @@ AjaxForm.prototype.init = function (options) {
             setTimeout(function () {
                 $tip.animate({"opacity": 0}, {
                         queue: false, duration: 500, complete: function () {
-                            if ($.trim(returnData.state) == 'success') {
-                                $("#modal_ajax_content").modal('hide');
+                            //如果返回的结果成功并需要跳转
+                            if ($.trim(returnData.state) == 'success' && returnData.refresh === true) {
+                                //如果是弹出框中的表单，需要等弹出框关闭后才能进行跳转；否则直接跳转
+                                if (_this.$form.parent().hasClass('modal-content')) {
+                                    var $modals = $('.modal');
+                                    $modals.on('hidden.bs.modal', function () {
+                                        $modals.off('hidden.bs.modal');
+                                        if ($.trim(returnData.referer)) {
+                                            //根据返回的hash加载页面
+                                            loadURL($.trim(returnData.referer));
+                                        } else {
+                                            //刷新本页
+                                            checkURL();
+                                        }
+                                    });
+                                    $modals.modal('hide');
+                                } else {
+                                    if ($.trim(returnData.referer)) {
+                                        //根据返回的hash加载页面
+                                        loadURL($.trim(returnData.referer));
+                                    } else {
+                                        //刷新本页
+                                        checkURL();
+                                    }
+                                }
                             }
                             $tip.remove();
                             _this.$subBtn.removeClass('subBtn_unable');
-                            if ($.trim(returnData.state) == 'success' && returnData.refresh === true) {
-                                if ($.trim(returnData.referer)) {
-                                    //根据返回的hash加载页面
-                                    loadURL($.trim(returnData.referer));
-                                } else {
-                                    //刷新本页
-                                    checkURL();
-                                }
-                            }
                         }
                     }
                 );
