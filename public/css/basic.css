@@ -139,3 +139,6 @@ hr{margin:15px 0;border-top:1px dashed #e7eaec;}
 
 .ajaxForm_tip_success{color:#4cae4c;font-size:14px;}
 .ajaxForm_tip_warning{color:#f0ad4e;font-size:14px;}
+
+.J_confirm_btn i{display:none;}
+.J_confirm_btn.subBtn_sending i{display:inline-block;}

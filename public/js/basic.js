@@ -192,7 +192,7 @@ $(window).on('hashchange', function () {
     var target = '';
     $(document).on('click', '.J_confirm_modal', function () {
         var $btn = $(this);
-        var tip = '确认吗？';
+        var tip = '<h4 style="text-align:center;">确认吗？</h4>';
         if (typeof $btn.attr('data-tip') !== 'undefined') {
             tip = $btn.attr('data-tip');
         }
@@ -203,10 +203,52 @@ $(window).on('hashchange', function () {
         });
     });
     $modal_confirm.on('click', '.J_confirm_btn', function () {
-        console.log(target);
-        setTimeout(function () {
-            $modal_confirm.modal('hide');
-        }, 2000);
+        var $confirm_btn = $(this);
+        if (!$confirm_btn.hasClass('subBtn_unable')) {
+            $confirm_btn.addClass('subBtn_unable');
+            $.ajax({
+                type: 'get',
+                url: target,
+                cache: false,
+                data: '',
+                dataType: 'json',
+                beforeSend:function(){
+                    $confirm_btn.addClass('subBtn_sending');
+                },
+                success: function (returnData) {
+                    $confirm_btn.removeClass('subBtn_sending');
+                    console.log(returnData);
+                    var $modals = $('.modal');
+                    if ($.trim(returnData.state) != 'success') {
+                        var tipText = returnData.message ? returnData.message : '提交失败';
+                        alert(tipText);
+                    }
+                    //如果返回的结果成功并需要跳转
+                    if ($.trim(returnData.state) == 'success' && returnData.refresh === true) {
+                        $modals.on('hidden.bs.modal', function () {
+                            $modals.off('hidden.bs.modal');
+                            if ($.trim(returnData.referer)) {
+                                //根据返回的hash加载页面
+                                loadURL($.trim(returnData.referer));
+                            } else {
+                                //刷新本页
+                                checkURL();
+                            }
+                        });
+                    }
+                    $modals.modal('hide');
+                    setTimeout(function () {
+                        $confirm_btn.removeClass('subBtn_unable');
+                    }, 500);
+
+                },
+                error: function () {
+                    alert('请求失败!!!!!!');
+                    $confirm_btn.removeClass('subBtn_sending');
+                    $confirm_btn.removeClass('subBtn_unable');
+                }
+            });
+        }
     });
 })();
 
