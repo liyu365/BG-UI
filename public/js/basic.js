@@ -7,13 +7,13 @@ function checkURL() {
     if (hash !== '') {
         loadURL(hash);
     } else {
-        loadURL(liyu_conf.defaultHash);
+        loadURL(common_conf.defaultHash);
     }
 
 }
 function loadURL(url) {
     var content = $('#content');
-    var target = liyu_conf.baseURL + url;
+    var target = common_conf.baseURL + url;
     $.ajax({
         type: 'get',
         url: target,
@@ -26,7 +26,7 @@ function loadURL(url) {
             var title = '';
             var $breadcrumb = $('#ribbon .breadcrumb');
             title = $('nav a[href="' + '#' + url + '"]').find('span').text();
-            if (url != liyu_conf.defaultHash && title != '') {
+            if (url != common_conf.defaultHash && title != '') {
                 $breadcrumb.html('<li><i class="fa fa-home"></i>工作台</li><li>' + title + '</li>');
             } else {
                 $breadcrumb.html('<li><i class="fa fa-home"></i>工作台</li>');

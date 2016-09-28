@@ -1,4 +1,4 @@
-<div class="liyu_wrapper">
+<div class="content_wrapper">
 
     <div class="container-fluid">
         <div class="row">
@@ -9,13 +9,11 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="lineW">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default J_tree_table_all_open" data-target="#tree_table1">全部展开</button>
-                                            <button type="button" class="btn btn-default J_tree_table_all_close" data-target="#tree_table1">全部收起</button>
-                                        </div>
+                                    <div class="lineW" style="margin-bottom:8px;">
+                                        <button type="button" class="btn btn-xs btn-info J_tree_table_all_open" data-target="#tree_table1"><i class="fa fa-caret-down"></i>全部展开</button>
+                                        <button type="button" class="btn btn-xs btn-info J_tree_table_all_close" data-target="#tree_table1"><i class="fa fa-caret-up"></i>全部收起</button>
                                     </div>
-                                    <form>
+                                    <form method="get" action="/api/ajaxReturn.php">
                                         <div class="table-responsive">
                                             <table class="table table-hover J_tree_table" cellspacing="0" width="100%" id="tree_table1">
                                                 <thead>
