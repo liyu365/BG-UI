@@ -142,3 +142,37 @@ hr{margin:15px 0;border-top:1px dashed #e7eaec;}
 
 .J_confirm_btn i{display:none;}
 .J_confirm_btn.subBtn_sending i{display:inline-block;}
+
+
+.tree_table > thead > tr > th,
+.tree_table > tbody > tr > th,
+.tree_table > tfoot > tr > th,
+.tree_table > thead > tr > td,
+.tree_table > tbody > tr > td,
+.tree_table > tfoot > tr > td {
+    padding:8px;
+    line-height:1.42857143;
+    vertical-align:middle !important;
+    border-top:1px solid #ebebeb !important;
+}
+.table thead{background:#ebebeb;}
+.tree_table .pull_btn{display:inline-block;width:20px;height:20px;vertical-align:middle;cursor:pointer;background:url(/public/images/icon_list.png) -20px 0 no-repeat;}
+.tree_table .pull_down{background:url(/public/images/icon_list.png) 0 0 no-repeat !important;}
+.tree_table .pull_up{background:url(/public/images/icon_list.png) 0 -20px no-repeat !important;}
+.tree_table .end{display:inline-block;width:50px;height:20px;vertical-align:middle;cursor:pointer;background:url(/public/images/icon_list.png) 0 -72px no-repeat;}
+.tree_table .space{display:inline-block;width:50px;height:20px;vertical-align:middle;cursor:pointer;}
+.tree_table input[type=text]{
+    display: inline-block;
+    margin-right:6px;
+    width: 40px;
+    height: 28px;
+    font-size: 14px;
+    padding:0 4px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
