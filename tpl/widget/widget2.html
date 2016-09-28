@@ -4,19 +4,20 @@
         <div class="row">
             <div class="col-md-12">
                 <aside>
-                    <header><i class="fa fa-fw fa-file"></i>基本表格</header>
+                    <header><i class="fa fa-fw fa-file"></i>树形视图</header>
                     <section>
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="alert alert-info" role="alert">
-                                        <b>提示信息</b><br/>
-                                        1.未审核状态的新闻不会显示在网站前台<br/>
-                                        2."添加时间"越晚的新闻，排序越靠前
+                                    <div class="lineW">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default J_tree_table_all_open" data-target="#tree_table1">全部展开</button>
+                                            <button type="button" class="btn btn-default J_tree_table_all_close" data-target="#tree_table1">全部收起</button>
+                                        </div>
                                     </div>
                                     <form>
                                         <div class="table-responsive">
-                                            <table class="table table-hover tree_table" cellspacing="0" width="100%">
+                                            <table class="table table-hover J_tree_table" cellspacing="0" width="100%" id="tree_table1">
                                                 <thead>
                                                 <tr>
                                                     <th width="40"></th>
@@ -28,31 +29,77 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td><span class="pull_btn pull_down"></span></td>
-                                                    <td><input type="text"/>全局</td>
-                                                    <td>site_config</td>
-                                                    <td>23</td>
-                                                    <td><input type="checkbox" checked="checked"/></td>
-                                                    <td><a href="#" class="btn btn-primary btn-xs">编辑</a><a href="#" class="btn btn-danger btn-xs">删除</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="pull_btn pull_up"></span></td>
-                                                    <td><span class="end"></span><input type="text"/>全局
-                                                    </td>
-                                                    <td>site_config</td>
-                                                    <td>23</td>
-                                                    <td><input type="checkbox" checked="checked" /></td>
-                                                    <td><a href="#" class="btn btn-primary btn-xs">编辑</a><a href="#" class="btn btn-danger btn-xs">删除</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="pull_btn"></span></td>
-                                                    <td><span class="space"></span><span class="end"></span><input type="text"/>全局</td>
-                                                    <td>site_config</td>
-                                                    <td>23</td>
-                                                    <td><input type="checkbox" checked="checked" /></td>
-                                                    <td><a href="#" class="btn btn-primary btn-xs">编辑</a><a href="#" class="btn btn-danger btn-xs">删除</a></td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><span class="J_pull_btn pull_down"></span></td>
+                                                        <td><input type="text"/>菜单1</td>
+                                                        <td>site_config</td>
+                                                        <td>23</td>
+                                                        <td><input type="checkbox" checked="checked"/></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs">编辑</a>
+                                                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></span></td>
+                                                        <td><span class="end"></span><input type="text"/>菜单1-1
+                                                        </td>
+                                                        <td>site_config</td>
+                                                        <td>23</td>
+                                                        <td><input type="checkbox" checked="checked" /></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs">编辑</a>
+                                                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><span class="space"></span><span class="end"></span><input type="text"/>菜单1-1-1</td>
+                                                        <td>site_config</td>
+                                                        <td>23</td>
+                                                        <td><input type="checkbox" checked="checked" /></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs">编辑</a>
+                                                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span class="J_pull_btn pull_down"></span></td>
+                                                        <td><input type="text"/>菜单2</td>
+                                                        <td>site_config</td>
+                                                        <td>23</td>
+                                                        <td><input type="checkbox" checked="checked"/></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs">编辑</a>
+                                                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><span class="end"></span><input type="text"/>菜单2-1</td>
+                                                        <td>site_config</td>
+                                                        <td>23</td>
+                                                        <td><input type="checkbox" checked="checked"/></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs">编辑</a>
+                                                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span class="blank_btn"></span></td>
+                                                        <td><input type="text"/>菜单3</td>
+                                                        <td>site_config</td>
+                                                        <td>23</td>
+                                                        <td><input type="checkbox" checked="checked"/></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs">编辑</a>
+                                                            <a href="#" class="btn btn-danger btn-xs">删除</a>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>

@@ -1,7 +1,3 @@
-window.liyu_conf = {
-    defaultHash: 'desktop.html',
-    baseURL: '/tpl/'
-};
 function checkURL() {
     var arr = location.href.split("#");
     var hash = '';
@@ -212,7 +208,7 @@ $(window).on('hashchange', function () {
                 cache: false,
                 data: '',
                 dataType: 'json',
-                beforeSend:function(){
+                beforeSend: function () {
                     $confirm_btn.addClass('subBtn_sending');
                 },
                 success: function (returnData) {
@@ -274,5 +270,53 @@ $(window).on('hashchange', function () {
             callBack: typeof $from.attr("data-callBack") !== 'undefined' ? eval('(' + $from.attr("data-callBack") + ')') : false,  //自定义回调函数
             validate: typeof $from.attr("data-validate") !== 'undefined' ? eval('(' + $from.attr("data-validate") + ')') : false  //最终验证函数
         });
+    });
+})();
+
+//树形菜单表格
+(function () {
+    $(document).on('click', '.J_tree_table .J_pull_btn', function () {
+        var $btn = $(this);
+        if ($btn.hasClass('pull_down')) {
+            $btn.removeClass('pull_down').addClass('pull_up');
+            var $tr = $btn.parent();
+            while ($tr[0].nodeName.toLowerCase() !== 'tr') {
+                $tr = $tr.parent();
+            }
+            $tr.siblings().css('display', 'none');
+        } else if ($btn.hasClass('pull_up')) {
+            $btn.removeClass('pull_up').addClass('pull_down');
+            var $tr2 = $btn.parent();
+            while ($tr2[0].nodeName.toLowerCase() !== 'tr') {
+                $tr2 = $tr2.parent();
+            }
+            $tr2.siblings().css('display', 'table-row');
+        }
+    });
+    $(document).on('click', '.J_tree_table_all_open', function () {
+        var $btn = $(this);
+        var $targetTable = $($btn.attr('data-target'));
+        if ($targetTable.length >= 1) {
+            var $all_J_pull_btn =  $targetTable.find('.J_pull_btn');
+            $all_J_pull_btn.removeClass('pull_up').addClass('pull_down');
+            var $all_tr = $targetTable.find('tr');
+            $all_tr.css('display', 'table-row');
+        }
+    });
+    $(document).on('click', '.J_tree_table_all_close', function () {
+        var $btn = $(this);
+        var $targetTable = $($btn.attr('data-target'));
+        if ($targetTable.length >= 1) {
+            var $all_J_pull_btn =  $targetTable.find('.J_pull_btn');
+            $all_J_pull_btn.each(function(){
+                var $btn = $(this);
+                $btn.removeClass('pull_down').addClass('pull_up');
+                var $tr = $btn.parent();
+                while ($tr[0].nodeName.toLowerCase() !== 'tr') {
+                    $tr = $tr.parent();
+                }
+                $tr.siblings().css('display', 'none');
+            });
+        }
     });
 })();

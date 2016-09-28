@@ -79,12 +79,7 @@ body{width:100%;min-height:100%;background:#ededed;}
     -webkit-transition:all .1s linear;
     transition:all .1s linear;
 }
-#left_panel .minifyBtn:hover{
-    width:40px;
-    padding-right:5px;
-    background:#646464;
-    color:#E4E4E4;
-}
+#left_panel .minifyBtn:hover{width:40px;padding-right:5px;background:#646464;color:#E4E4E4;}
 
 .minified #main{margin-left:45px;}
 .minified #page_footer .inside{padding-left:45px;}
@@ -103,11 +98,9 @@ body{width:100%;min-height:100%;background:#ededed;}
 .minified #left_panel nav > ul > li > ul > li > a{padding:7px 10px 7px 10px;}
 .minified #left_panel nav > ul > li > ul > li > ul > li > a{padding:7px 10px 7px 30px;}
 
-
 #main #ribbon .breadcrumb{padding:0 0 0 14px;color:#BBB;line-height:40px;margin-bottom:0;list-style:none;background:none;border-radius:0;  }
 #main #ribbon .breadcrumb li i{margin-right:3px;}
 #main #ribbon .breadcrumb li:last-child{color:#E4E4E4;}
-
 
 @media only screen and (min-width:0px) and (max-width:767px) {
     #page_header .right_side .toggleMenu_btn{display:block;}
@@ -117,7 +110,6 @@ body{width:100%;min-height:100%;background:#ededed;}
     #page_footer .inside{padding-left:0;text-align:center;}
 }
 
-
 .liyu_wrapper aside{background:#fff;margin-bottom:15px;}
 .liyu_wrapper aside header{line-height:34px;border:1px solid #CCC;border-bottom:0;padding-left:10px;}
 .liyu_wrapper aside header i{margin-right:6px;}
@@ -126,45 +118,42 @@ body{width:100%;min-height:100%;background:#ededed;}
 .liyu_wrapper aside section .lineW:last-child{margin-bottom:0;}
 .liyu_wrapper aside section table.dataTable{margin-top:0 !important;}
 
+/*对bootstrap的补全或覆盖*/
 .form-inline .gap{display:inline-block;width:10px;}
 @media only screen and (min-width:0px) and (max-width:767px) {
     .form-inline .gap{display:none;width:0;height:0;}
 }
-
-.table{margin:0;}
-.btn-group i{margin-right:6px;}
 hr{margin:15px 0;border-top:1px dashed #e7eaec;}
+.table{margin:0;}
+.table thead{background:#ebebeb;}
+.btn-group i{margin-right:6px;}
 .help-block{margin-bottom:0;}
 
-
+/*ajaxForm*/
 .ajaxForm_tip_success{color:#4cae4c;font-size:14px;}
 .ajaxForm_tip_warning{color:#f0ad4e;font-size:14px;}
 
+/*询问弹出框*/
 .J_confirm_btn i{display:none;}
 .J_confirm_btn.subBtn_sending i{display:inline-block;}
 
-
-.tree_table > thead > tr > th,
-.tree_table > tbody > tr > th,
-.tree_table > tfoot > tr > th,
-.tree_table > thead > tr > td,
-.tree_table > tbody > tr > td,
-.tree_table > tfoot > tr > td {
-    padding:8px;
-    line-height:1.42857143;
+/*树形视图*/
+.J_tree_table th,
+.J_tree_table td {
     vertical-align:middle !important;
-    border-top:1px solid #ebebeb !important;
+    border-top:1px solid #f0f0f0 !important;
 }
-.table thead{background:#ebebeb;}
-.tree_table .pull_btn{display:inline-block;width:20px;height:20px;vertical-align:middle;cursor:pointer;background:url(/public/images/icon_list.png) -20px 0 no-repeat;}
-.tree_table .pull_down{background:url(/public/images/icon_list.png) 0 0 no-repeat !important;}
-.tree_table .pull_up{background:url(/public/images/icon_list.png) 0 -20px no-repeat !important;}
-.tree_table .end{display:inline-block;width:50px;height:20px;vertical-align:middle;cursor:pointer;background:url(/public/images/icon_list.png) 0 -72px no-repeat;}
-.tree_table .space{display:inline-block;width:50px;height:20px;vertical-align:middle;cursor:pointer;}
-.tree_table input[type=text]{
+.J_tree_table > tbody + tbody {border-top:0 !important;}
+.J_tree_table .J_pull_btn{display:inline-block;width:20px;height:20px;}
+.J_tree_table .pull_down{background:url(/public/images/icon_list.png) 0 -20px no-repeat !important;cursor:pointer;}
+.J_tree_table .pull_up{background:url(/public/images/icon_list.png) 0 0 no-repeat !important;cursor:pointer;}
+.J_tree_table .blank_btn{display:inline-block;width:20px;height:20px;background:url(/public/images/icon_list.png) -20px 0 no-repeat;}
+.J_tree_table .end{display:inline-block;width:46px;height:20px;vertical-align:middle;cursor:pointer;background:url(/public/images/icon_list.png) 0 -72px no-repeat;}
+.J_tree_table .space{display:inline-block;width:46px;height:20px;vertical-align:middle;cursor:pointer;}
+.J_tree_table input[type=text]{
     display: inline-block;
     margin-right:6px;
-    width: 40px;
+    width: 35px;
     height: 28px;
     font-size: 14px;
     padding:0 4px;
