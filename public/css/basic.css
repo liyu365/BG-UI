@@ -102,7 +102,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 #main #ribbon .breadcrumb li i{margin-right:3px;}
 #main #ribbon .breadcrumb li:last-child{color:#E4E4E4;}
 
-@media only screen and (min-width:0px) and (max-width:767px) {
+@media only screen and (min-width:0px) and (max-width:768px) {
     #page_header .right_side .toggleMenu_btn{display:block;}
     #main{margin-left:0;}
     #left_panel{margin-left:-220px;background:#3a3633;}
@@ -140,6 +140,14 @@ button i,a i{margin-right:6px;}
 .J_tree_table td {
     vertical-align:middle !important;
     border-top:1px solid #f0f0f0 !important;
+}
+.table-responsive > .J_tree_table > thead > tr > th,
+.table-responsive > .J_tree_table > tbody > tr > th,
+.table-responsive > .J_tree_table > tfoot > tr > th,
+.table-responsive > .J_tree_table > thead > tr > td,
+.table-responsive > .J_tree_table > tbody > tr > td,
+.table-responsive > .J_tree_table > tfoot > tr > td {
+    white-space: nowrap;
 }
 .J_tree_table > tbody + tbody {border-top:0 !important;}
 .J_tree_table .J_pull_btn{display:inline-block;width:20px;height:20px;}

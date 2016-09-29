@@ -73,7 +73,7 @@ $(window).on('hashchange', function () {
         }
     });
     $(window).on('resize', function () {
-        if ($(window).width() >= 767) {
+        if ($(window).width() >= 768) {
             $left_panel.css('left', 0);
             $toggleMenu_btn.removeClass('active');
         } else {
