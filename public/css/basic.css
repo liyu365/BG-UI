@@ -116,7 +116,6 @@ body{width:100%;min-height:100%;background:#ededed;}
 .content_wrapper aside section{border:1px solid #CCC;padding:15px 0;}
 .content_wrapper aside section .lineW{margin-bottom:20px;}
 .content_wrapper aside section .lineW:last-child{margin-bottom:0;}
-.content_wrapper aside section table.dataTable{margin-top:0 !important;}
 
 /*对bootstrap的补全或覆盖*/
 .form-inline .gap{display:inline-block;width:10px;}
@@ -124,11 +123,9 @@ body{width:100%;min-height:100%;background:#ededed;}
     .form-inline .gap{display:none;width:0;height:0;}
 }
 hr{margin:15px 0;border-top:1px dashed #e7eaec;}
-.table{margin:0;}
-.table thead{background:#ebebeb;}
+.table thead,.table tfoot{background:#ebebeb;}
 .help-block{margin-bottom:0;}
-button i{margin-right:6px;}
-a i{margin-right:6px;}
+button i,a i{margin-right:6px;}
 
 /*ajaxForm*/
 .ajaxForm_tip_success{color:#4cae4c;font-size:14px;}
