@@ -9,7 +9,6 @@ function checkURL() {
     } else {
         loadURL(common_conf.defaultHash);
     }
-
 }
 function loadURL(url) {
     var content = $('#content');
@@ -59,6 +58,7 @@ $(window).on('hashchange', function () {
 
 //header三个按钮
 (function () {
+    //菜单按钮
     var $left_panel = $('#left_panel');
     var $body = $('body');
     var $toggleMenu_btn = $('#page_header .toggleMenu_btn');
@@ -78,6 +78,39 @@ $(window).on('hashchange', function () {
             $toggleMenu_btn.removeClass('active');
         } else {
             $body.removeClass('minified');
+        }
+    });
+    //全屏按钮
+    function launchFullscreen(element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    }
+
+    function exitFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
+
+    var $fullScreen_btn = $('#page_header .fullScreen_btn');
+    $fullScreen_btn.on('click', function () {
+        if (!$fullScreen_btn.hasClass('active')) {
+            launchFullscreen(document.documentElement);
+            $fullScreen_btn.addClass('active')
+        } else {
+            exitFullscreen();
+            $fullScreen_btn.removeClass('active')
         }
     });
 })();

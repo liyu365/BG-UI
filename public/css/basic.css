@@ -124,6 +124,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 
 @media only screen and (min-width:0px) and (max-width:768px) {
     #page_header .right_side .toggleMenu_btn{display:block;}
+    #page_header .right_side .fullScreen_btn{display:none;}
     #main{margin-left:0;}
     #left_panel{margin-left:-220px;background:#3a3633;}
     #left_panel .minifyBtn{display:none;}
