@@ -139,7 +139,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 /*登录页*/
 .form-signin {max-width:330px;padding:15px;margin:0 auto;}
 .form-signin .logo{font-size:80px;text-align:center;font-weight:bold;font-family:Consolas,"Courier New",monospace;}
-.form-signin h3{color:#676a6c;font-size:16px;text-align:center;}
+.form-signin h3{color:#676a6c;font-size:14px;text-align:center;}
 .form-signin .form-control{padding:0 12px;height:46px;line-height:46px;}
 .form-signin .form-control:focus {border:2px solid #474544;outline:0;-webkit-box-shadow:none;box-shadow: none;}
 .form-signin .subBtn{background:#474544;padding:9px 35px 13px;border:0;color:#fff;font-size:20px;

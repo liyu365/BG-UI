@@ -148,8 +148,10 @@ $(window).on('hashchange', function () {
         });
         if (!$body.hasClass('minified')) {
             $body.addClass('minified');
+            $(this).find('i').addClass('fa-flip-horizontal');
         } else {
             $body.removeClass('minified');
+            $(this).find('i').removeClass('fa-flip-horizontal');
         }
     });
 })();
@@ -297,7 +299,7 @@ $(window).on('hashchange', function () {
         var $btn = $(this);
         var $targetTable = $($btn.attr('data-target'));
         if ($targetTable.length >= 1) {
-            var $all_J_pull_btn =  $targetTable.find('.J_pull_btn');
+            var $all_J_pull_btn = $targetTable.find('.J_pull_btn');
             $all_J_pull_btn.removeClass('pull_up').addClass('pull_down');
             var $all_tr = $targetTable.find('tr');
             $all_tr.css('display', 'table-row');
@@ -307,8 +309,8 @@ $(window).on('hashchange', function () {
         var $btn = $(this);
         var $targetTable = $($btn.attr('data-target'));
         if ($targetTable.length >= 1) {
-            var $all_J_pull_btn =  $targetTable.find('.J_pull_btn');
-            $all_J_pull_btn.each(function(){
+            var $all_J_pull_btn = $targetTable.find('.J_pull_btn');
+            $all_J_pull_btn.each(function () {
                 var $btn = $(this);
                 $btn.removeClass('pull_down').addClass('pull_up');
                 var $tr = $btn.parent();
