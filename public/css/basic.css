@@ -45,6 +45,11 @@ body{width:100%;min-height:100%;background:#ededed;}
 #page_header .right_side span:hover{color:#222;}
 #page_header .right_side span.active{background:#5a5a5a;color:#fff;border:1px solid #5a5a5a;}
 #page_header .right_side .toggleMenu_btn{display:none;}
+#page_header .logow{display:inline-block;padding-left:14px;}
+#page_header .logow a{display:inline-block;font-size:18px;height:50px;line-height:50px;color:#747477;font-weight:bold;}
+#page_header .logow a:hover{text-decoration:none;}
+#page_header .logow a:active{text-decoration:none;}
+#page_header .logow a:focus{text-decoration:none;}
 
 #left_panel nav ul{list-style:none;padding:0;margin:0;}
 #left_panel nav ul li{position:relative;}
