@@ -140,24 +140,25 @@ body{width:100%;min-height:100%;background:#ededed;}
 
 /*登录页*/
 .form-signin {max-width:330px;padding:15px;margin:0 auto;}
-.form-signin .logo{font-size:80px;text-align:center;font-weight:bold;font-family:Consolas,"Courier New",monospace;}
+.form-signin .logo{font-size:78px;text-align:center;font-weight:bold;color: #444444;font-family:Consolas,"Courier New",monospace;}
 .form-signin h3{color:#676a6c;font-size:14px;text-align:center;}
 .form-signin .form-control{padding:0 12px;height:46px;line-height:46px;}
-.form-signin .form-control:focus {border:2px solid #827f7e;outline:0;-webkit-box-shadow:none;box-shadow: none;}
-.form-signin .subBtn{background:#474544;padding:9px 35px 13px;border:0;color:#fff;font-size:20px;
-    -webkit-box-shadow: inset 0 -4px 0 #3a3633;
-    box-shadow:inset 0 -4px 0 #3a3633;
+.form-signin .form-control:focus {border:2px solid #afacab;outline:0;-webkit-box-shadow:none;box-shadow: none;}
+.form-signin .subBtn{background:#009a61;padding:9px 35px 13px;border:0;color:#fff;font-size:20px;
+    -webkit-box-shadow: inset 0 -4px 0 #007e55;
+    box-shadow:inset 0 -4px 0 #007e55;
     -webkit-transition: all 250ms cubic-bezier(0.1,.57,.1,1);
     transition: all 250ms cubic-bezier(0.1,.57,.1,1);
 }
-.form-signin .subBtn:focus{background:#3a3633;outline:none;}
-.form-signin .subBtn:hover{background:#3a3633;}
+.form-signin .subBtn:focus{background:#007e55;outline:none;}
+.form-signin .subBtn:hover{background:#007e55;}
 .form-signin .help{color:#999;padding:10px;text-align:center;}
 .form-signin .copyright{text-align:center;}
 .form-signin .copyright i{margin-right:4px;color:#999;}
 .form-signin .copyright a{color:#3a3633;}
 
 /*对bootstrap的补全或覆盖*/
+.btn-primary{color:#fff;background-color:#009a61;border-color:#009a61;}
 .form-inline .gap{display:inline-block;width:10px;}
 @media only screen and (min-width:0px) and (max-width:767px) {
     .form-inline .gap{display:none;width:0;height:0;}
