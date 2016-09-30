@@ -26,8 +26,10 @@ body{width:100%;min-height:100%;background:#ededed;}
 #main{position:relative;min-height:500px;margin-left:220px;padding-bottom:50px;}
 #main #ribbon{min-height:40px;background:#474544;}
 #main #content{padding:15px 0;}
-#page_footer{position:absolute;bottom:0;left:0;width:100%;height:50px;line-height:49px;background:#2a2725;color:#fff;border-top:1px solid #CECECE;}
+#page_footer{position:absolute;bottom:0;left:0;width:100%;height:50px;line-height:49px;background: #322f2c;color:#fff;border-top:1px solid #CECECE;}
 #page_footer .inside{padding-left:220px;text-align:center;}
+#page_footer .inside i{margin-right:4px;}
+#page_footer .inside a{color:#fff;}
 .ajax-loading-animation{font-size:20px;padding:0 15px;}
 .ajax-loading-error{font-size:20px;padding:0 15px;}
 
@@ -46,7 +48,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 #page_header .right_side span.active{background:#5a5a5a;color:#fff;border:1px solid #5a5a5a;}
 #page_header .right_side .toggleMenu_btn{display:none;}
 #page_header .logow{display:inline-block;padding-left:14px;}
-#page_header .logow a{display:inline-block;font-size:28px;height:50px;line-height:50px;color:#3a3633;font-family:Consolas,"Courier New",monospace;}
+#page_header .logow a{display:inline-block;font-size:30px;font-weight:bold;height:50px;line-height:50px;color:#3a3633;font-family:Consolas,"Courier New",monospace;}
 #page_header .logow a:hover{text-decoration:none;}
 #page_header .logow a:active{text-decoration:none;}
 #page_header .logow a:focus{text-decoration:none;}
@@ -97,6 +99,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 .minified #left_panel{width:45px !important;}
 .minified #left_panel, .minified nav > ul > li {overflow:visible;}
 .minified #left_panel nav > ul > li{border-bottom:1px solid #1A1817;border-top:1px solid #525151;}
+.minified #left_panel nav > ul > li:first-child{border-top:0;}
 .minified #left_panel nav > ul > li > a > span{display:none;}
 .minified #left_panel nav > ul > li > a > i{margin:0 auto;}
 .minified #left_panel nav > ul > li > a > b{display:none;}
@@ -108,6 +111,11 @@ body{width:100%;min-height:100%;background:#ededed;}
 .minified #left_panel nav > ul > li:hover > ul{display:block !important;}
 .minified #left_panel nav > ul > li > ul > li > a{padding:7px 10px 7px 10px;}
 .minified #left_panel nav > ul > li > ul > li > ul > li > a{padding:7px 10px 7px 30px;}
+.minified .login_info{margin-bottom:0;}
+.minified .login_info > span{padding:0;}
+.minified .login_info > span > div > a{text-align:center;}
+.minified .login_info > span > div > a > span{display:none;}
+.minified .login_info > span > div > a > i{margin:0;color:#c0bbb7;}
 
 #main #ribbon .breadcrumb{padding:0 0 0 14px;color:#BBB;line-height:40px;margin-bottom:0;list-style:none;background:none;border-radius:0;  }
 #main #ribbon .breadcrumb li i{margin-right:3px;}
@@ -130,23 +138,22 @@ body{width:100%;min-height:100%;background:#ededed;}
 
 /*登录页*/
 .form-signin {max-width:330px;padding:15px;margin:0 auto;}
-.form-signin .logo{font-size:80px;text-align:center;font-family:Consolas,"Courier New",monospace;}
+.form-signin .logo{font-size:80px;text-align:center;font-weight:bold;font-family:Consolas,"Courier New",monospace;}
 .form-signin h3{color:#676a6c;font-size:16px;text-align:center;}
 .form-signin .form-control{padding:0 12px;height:46px;line-height:46px;}
 .form-signin .form-control:focus {border:2px solid #474544;outline:0;-webkit-box-shadow:none;box-shadow: none;}
 .form-signin .subBtn{background:#474544;padding:9px 35px 13px;border:0;color:#fff;font-size:20px;
     -webkit-box-shadow: inset 0 -4px 0 #3a3633;
     box-shadow:inset 0 -4px 0 #3a3633;
-}
-.form-signin .subBtn:focus{background:#3a3633;outline:none;}
-.form-signin .subBtn:hover{background:#3a3633;
     -webkit-transition: all 250ms cubic-bezier(0.1,.57,.1,1);
     transition: all 250ms cubic-bezier(0.1,.57,.1,1);
 }
+.form-signin .subBtn:focus{background:#3a3633;outline:none;}
+.form-signin .subBtn:hover{background:#3a3633;}
 .form-signin .help{color:#999;padding:10px;text-align:center;}
 .form-signin .copyright{text-align:center;}
 .form-signin .copyright i{margin-right:4px;color:#999;}
-.form-signin .copyright a{color:#333;}
+.form-signin .copyright a{color:#3a3633;}
 
 /*对bootstrap的补全或覆盖*/
 .form-inline .gap{display:inline-block;width:10px;}
