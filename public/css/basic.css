@@ -88,10 +88,10 @@ body{width:100%;min-height:100%;background:#ededed;}
 }
 #left_panel .minifyBtn:hover{width:40px;padding-right:5px;background:#646464;color:#E4E4E4;}
 
-.login_info{width:100%;height:40px;border-bottom:1px solid #525151;margin-bottom:5px;box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);  }
+.login_info{width:100%;height:40px;border-bottom:1px solid #525151;margin-bottom:5px;box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);}
 .login_info > span{display:block;height:39px;padding:0 10px;border-bottom:1px solid #1A1817;}
 .login_info > span > div{position:relative;display:block;height:39px;color:#fff;}
-.login_info > span > div > a{display:inline-block;width:100%;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:39px;line-height:39px;color:#fff;font-size:14px;}
+.login_info > span > div > a{display:inline-block;width:100%;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:39px;line-height:39px;color:#c0bbb7;font-size:14px;}
 .login_info > span > div > .dropdown-menu{margin-top:0;}
 .login_info .name{margin-right:2px;}
 
@@ -143,7 +143,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 .form-signin .logo{font-size:80px;text-align:center;font-weight:bold;font-family:Consolas,"Courier New",monospace;}
 .form-signin h3{color:#676a6c;font-size:14px;text-align:center;}
 .form-signin .form-control{padding:0 12px;height:46px;line-height:46px;}
-.form-signin .form-control:focus {border:2px solid #474544;outline:0;-webkit-box-shadow:none;box-shadow: none;}
+.form-signin .form-control:focus {border:2px solid #827f7e;outline:0;-webkit-box-shadow:none;box-shadow: none;}
 .form-signin .subBtn{background:#474544;padding:9px 35px 13px;border:0;color:#fff;font-size:20px;
     -webkit-box-shadow: inset 0 -4px 0 #3a3633;
     box-shadow:inset 0 -4px 0 #3a3633;
