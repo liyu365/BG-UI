@@ -46,7 +46,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 #page_header .right_side span.active{background:#5a5a5a;color:#fff;border:1px solid #5a5a5a;}
 #page_header .right_side .toggleMenu_btn{display:none;}
 #page_header .logow{display:inline-block;padding-left:14px;}
-#page_header .logow a{display:inline-block;font-size:18px;height:50px;line-height:50px;color:#747477;font-weight:bold;}
+#page_header .logow a{display:inline-block;font-size:22px;height:50px;line-height:50px;color:#3a3633;font-family:Consolas,"Courier New",monospace;}
 #page_header .logow a:hover{text-decoration:none;}
 #page_header .logow a:active{text-decoration:none;}
 #page_header .logow a:focus{text-decoration:none;}
@@ -85,6 +85,12 @@ body{width:100%;min-height:100%;background:#ededed;}
     transition:all .1s linear;
 }
 #left_panel .minifyBtn:hover{width:40px;padding-right:5px;background:#646464;color:#E4E4E4;}
+
+.login_info{width:100%;height:40px;border-bottom:1px solid #525151;margin-bottom:5px;box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);  }
+.login_info > span{display:block;height:39px;padding:0 10px;border-bottom:1px solid #1A1817;}
+.login_info > span > div{position:relative;display:block;height:39px;color:#fff;}
+.login_info > span > div > a{display:inline-block;width:100%;height:39px;line-height:39px;color:#fff;font-size:14px;}
+.login_info > span > div > .dropdown-menu{margin-top:0;}
 
 .minified #main{margin-left:45px;}
 .minified #page_footer .inside{padding-left:45px;}
