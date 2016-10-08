@@ -1,4 +1,8 @@
-/*骨架*/
+/**
+ *============================
+ *骨架
+ *============================
+ */
 body,button,input,select,textarea,table{font-family:\5FAE\8F6F\96C5\9ED1,Arial !important;}
 html{position:relative;min-height:100%;background:#ededed;color:#000;}
 body{width:100%;min-height:100%;background:#ededed;}
@@ -136,7 +140,11 @@ body{width:100%;min-height:100%;background:#ededed;}
 .content_wrapper aside header i{margin-right:6px;}
 .content_wrapper aside section{border:1px solid #CCC;padding:15px 0;}
 
-/*登录页*/
+/**
+ *============================
+ *登录页
+ *============================
+ */
 .form-signin {max-width:330px;padding:15px;margin:0 auto;}
 .form-signin .logo{font-size:78px;text-align:center;font-weight:bold;color: #444444;font-family:Consolas,"Courier New",monospace;}
 .form-signin h3{color:#676a6c;font-size:14px;text-align:center;}
@@ -155,7 +163,11 @@ body{width:100%;min-height:100%;background:#ededed;}
 .form-signin .copyright i{margin-right:4px;color:#999;}
 .form-signin .copyright a{color:#3a3633;}
 
-/*对bootstrap的补全或覆盖*/
+/**
+ *============================
+ *对bootstrap的补全或覆盖
+ *============================
+ */
 /*.btn-primary {
     color: #ffffff;
     background-color: #009f6c;
@@ -221,21 +233,41 @@ fieldset[disabled] .btn-primary.focus {
 hr{margin:15px 0;border-top:1px solid #f0f0f0;}
 .help-block{margin-bottom:0;}
 button i,a i{margin-right:6px;}
+.pagination button i,.pagination a i{margin:0;}
 .my_panel .heading{padding:8px 10px;font-weight:bold;background:#ebebeb;border-bottom:2px solid #ddd;}
 .my_panel .body{padding:10px 10px 20px;}
 .my_panel .body .table{margin-bottom:0;}
 .my_panel .body .table tr:first-child td{border-top:0;}
 .my_panel .body .table thead,.my_panel .body .table tfoot{background:none !important;}
 
-/*ajaxForm*/
+/**
+ *============================
+ *DataTables的补全或覆盖
+ *============================
+ */
+div.dataTables_wrapper div.dataTables_paginate{margin:20px 0 0 0 !important;}
+
+/**
+ *============================
+ *ajaxForm
+ *============================
+ */
 .ajaxForm_tip_success{color:#4cae4c;font-size:14px;}
 .ajaxForm_tip_warning{color:#f0ad4e;font-size:14px;}
 
-/*询问弹出框*/
+/**
+ *============================
+ *询问弹出框
+ *============================
+ */
 .J_confirm_btn i{display:none;}
 .J_confirm_btn.subBtn_sending i{display:inline-block;}
 
-/*树形视图*/
+/**
+ *============================
+ *树形视图
+ *============================
+ */
 .J_tree_table th,
 .J_tree_table td {
     vertical-align:middle !important;
