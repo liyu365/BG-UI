@@ -9,7 +9,36 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
-
+                                    <form class="form-horizontal" role="form" method="get" action="/api/ajaxReturn.json">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">新闻标题</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="新闻标题" name="title">
+                                            </div>
+                                            <p class="col-sm-7 help-block"></p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">作者</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="作者" name="author">
+                                            </div>
+                                            <p class="col-sm-7 help-block"></p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">简介</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-control" id="summernote"></div>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <div class=" col-sm-12">
+                                                <button type="button" class="btn btn-primary J_ajaxSubmitBtn">提交</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -20,3 +49,10 @@
     </div>
 
 </div>
+
+<script>
+    $('#summernote').summernote({
+        lang: 'zh-CN',
+        height: 300
+    });
+</script>
