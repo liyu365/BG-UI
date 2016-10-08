@@ -135,8 +135,6 @@ body{width:100%;min-height:100%;background:#ededed;}
 .content_wrapper aside header{line-height:34px;border:1px solid #CCC;border-bottom:0;padding-left:10px;}
 .content_wrapper aside header i{margin-right:6px;}
 .content_wrapper aside section{border:1px solid #CCC;padding:15px 0;}
-.content_wrapper aside section .lineW{margin-bottom:20px;}
-.content_wrapper aside section .lineW:last-child{margin-bottom:0;}
 
 /*登录页*/
 .form-signin {max-width:330px;padding:15px;margin:0 auto;}
