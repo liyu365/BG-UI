@@ -213,17 +213,19 @@ fieldset[disabled] .btn-primary.focus {
     color: #009f6c;
     background-color: #ffffff;
 }*/
+.table thead,.table tfoot{background:#ebebeb;}
 .form-inline .gap{display:inline-block;width:10px;}
 @media only screen and (min-width:0px) and (max-width:767px) {
     .form-inline .gap{display:none;width:0;height:0;}
 }
-hr{margin:15px 0;border-top:1px dashed #e7eaec;}
+hr{margin:15px 0;border-top:1px solid #f0f0f0;}
 .help-block{margin-bottom:0;}
 button i,a i{margin-right:6px;}
 .my_panel .heading{padding:8px 10px;font-weight:bold;background:#ebebeb;border-bottom:2px solid #ddd;}
 .my_panel .body{padding:10px 10px 20px;}
 .my_panel .body .table{margin-bottom:0;}
 .my_panel .body .table tr:first-child td{border-top:0;}
+.my_panel .body .table thead,.my_panel .body .table tfoot{background:none !important;}
 
 /*ajaxForm*/
 .ajaxForm_tip_success{color:#4cae4c;font-size:14px;}
