@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="/public/js/vendor/summernote/summernote.css">
+<script src="/public/js/vendor/summernote/summernote.js"></script>
+<script src="/public/js/vendor/summernote/lang/summernote-zh-CN.js"></script>
+
 <div class="content_wrapper">
 
     <div class="container-fluid">
@@ -9,6 +13,11 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
+                                    <div class="alert alert-info" role="alert">
+                                        summernote官网：<a target="_blank" href="http://summernote.org/">http://summernote.org/</a>
+                                        <br/>
+                                        <b>注意：summernote不支持IE6、7、8</b>
+                                    </div>
                                     <form class="form-horizontal" role="form" method="get" action="/api/ajaxReturn.json">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">新闻标题</label>
@@ -53,6 +62,16 @@
 <script>
     $('#summernote').summernote({
         lang: 'zh-CN',
-        height: 300
+        height: 300,
+        callbacks: {
+            onInit: function () {
+            },
+            onFocus: function () {
+            },
+            onBlur: function () {
+                var $this = $(this);
+                console.log($this);
+            }
+        }
     });
 </script>
