@@ -1,3 +1,5 @@
+<script src="/public/js/vendor/kindeditor/kindeditor-all.js"></script>
+
 <div class="content_wrapper">
 
     <div class="container-fluid">
@@ -9,7 +11,39 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
-
+                                    <div class="alert alert-info" role="alert">
+                                        kindeditor官网：<a target="_blank" href="http://kindeditor.org/">http://kindeditor.org/</a>
+                                    </div>
+                                    <form class="form-horizontal" role="form" method="get" action="/api/ajaxReturn.json">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">新闻标题</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="新闻标题" name="title">
+                                            </div>
+                                            <p class="col-sm-7 help-block"></p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">作者</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="作者" name="author">
+                                            </div>
+                                            <p class="col-sm-7 help-block"></p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">简介</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" id="editor"></textarea>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <div class=" col-sm-12">
+                                                <button type="button" class="btn btn-primary J_ajaxSubmitBtn">提交</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -20,3 +54,33 @@
     </div>
 
 </div>
+
+<script>
+    var $textarea = $('#editor');
+    var editor = KindEditor.create($textarea[0], {
+        themeType: 'default',
+        langType: 'zh-CN',
+        basePath: '/public/js/vendor/kindeditor/',
+        themesPath: '/public/js/vendor/kindeditor/themes/',
+        pluginsPath: '/public/js/vendor/kindeditor/plugins/',
+        langPath: '/public/js/vendor/kindeditor/lang/',
+        filePostName: 'imgFile',    //imgFile是编辑器中图片上传的默认表单域名称
+        width: '100%',
+        minHeight: 200,    //最小高度，不用写px单位
+        resizeType: 1,     //2时可以拖动改变宽度和高度，1时只能改变高度，0时不能拖动。
+        allowPreviewEmoticons: true,  //允许预览表情图片
+        allowImageUpload: true,       //允许本地上传图片
+        allowFileManager: false,      //true时显示浏览远程服务器按钮
+        //上传图片、Flash、视音频、文件时，支持添加别的参数一并传到服务器
+        extraFileUploadParams: '{"uid":250}',
+        afterBlur: function () {
+            //编辑器失去焦点时，同步编辑器中的内容到textarea，在异步提交内容的时候，必须写！否则textarea中的值是不会改变的
+            this.sync();
+        },
+        uploadJson: '/api/upload.php',
+        items: [
+            'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+            'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+    });
+</script>
