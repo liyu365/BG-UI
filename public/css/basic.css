@@ -158,7 +158,7 @@ body{width:100%;min-height:100%;background:#ededed;}
 .form-signin .copyright a{color:#3a3633;}
 
 /*对bootstrap的补全或覆盖*/
-.btn-primary {
+/*.btn-primary {
     color: #ffffff;
     background-color: #009f6c;
     border-color: #00855a;
@@ -214,15 +214,18 @@ fieldset[disabled] .btn-primary.focus {
 .btn-primary .badge {
     color: #009f6c;
     background-color: #ffffff;
-}
+}*/
 .form-inline .gap{display:inline-block;width:10px;}
 @media only screen and (min-width:0px) and (max-width:767px) {
     .form-inline .gap{display:none;width:0;height:0;}
 }
 hr{margin:15px 0;border-top:1px dashed #e7eaec;}
-.table thead,.table tfoot{background:#ebebeb;}
 .help-block{margin-bottom:0;}
 button i,a i{margin-right:6px;}
+.my_panel .heading{padding:8px 10px;font-weight:bold;background:#ebebeb;border-bottom:2px solid #ddd;}
+.my_panel .body{padding:10px 10px 20px;}
+.my_panel .body .table{margin-bottom:0;}
+.my_panel .body .table tr:first-child td{border-top:0;}
 
 /*ajaxForm*/
 .ajaxForm_tip_success{color:#4cae4c;font-size:14px;}
