@@ -192,7 +192,8 @@ $(window).on('hashchange', function () {
 //ajax内容弹出框
 (function () {
     var $modal_ajax_content = $("#modal_ajax_content");
-    $(document).on('click', '.J_ajax_content_modal', function () {
+    $(document).on('click', '.J_ajax_content_modal', function (e) {
+        e.preventDefault();
         var $btn = $(this);
         if (typeof $btn.attr('data-href') !== 'undefined') {
             $.ajax({
@@ -221,7 +222,8 @@ $(window).on('hashchange', function () {
 (function () {
     var $modal_confirm = $("#modal_confirm");
     var target = '';
-    $(document).on('click', '.J_confirm_modal', function () {
+    $(document).on('click', '.J_confirm_modal', function (e) {
+        e.preventDefault();
         var $btn = $(this);
         var tip = '<h4 style="text-align:center;">确认吗？</h4>';
         if (typeof $btn.attr('data-tip') !== 'undefined') {
@@ -285,7 +287,8 @@ $(window).on('hashchange', function () {
 
 //J_ajaxSubmitBtn绑定事件
 (function () {
-    $(document).on('click', '.J_ajaxSubmitBtn', function () {
+    $(document).on('click', '.J_ajaxSubmitBtn', function (e) {
+        e.preventDefault();
         var $btn = $(this);
         if ($btn.hasClass('subBtn_unable')) {
             return;
