@@ -50,7 +50,7 @@
         'fileTypeDesc': 'Image Files',                 //文件类型的说明
         'fileTypeExts': '*.gif; *.jpg; *.png; *.jpeg',                 //指定允许上传的文件类型。默认*.*。比如只支持gif , jpg , png类型的图像，那么该属性设置为: ‘*.gif; *.jpg ; *.png’
         'formData': '{"uid":"250"}',                         //指定上传文件附带的其他数据
-        'uploader': '/api/upload.php',                         //服务器脚本路径
+        'uploader': '/server/upload.php',                         //服务器脚本路径
         'onUploadSuccess': function (file, data, response) {
             /**
              * 在每一个文件上传成功后触发！
