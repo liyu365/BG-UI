@@ -3,7 +3,7 @@
  *骨架
  *============================
  */
-body,button,input,select,textarea,table{font-family:\5FAE\8F6F\96C5\9ED1,Arial !important;}
+/*body, button, input, select, textarea, table{font-family:"Helvetica Neue", Helvetica, Arial, \5FAE\8F6F\96C5\9ED1, sans-serif !important;}*/
 html{position:relative;min-height:100%;background:#ededed;color:#000;}
 body{width:100%;min-height:100%;background:#ededed;}
 #page_header{position:relative;z-index:905;height:50px;
@@ -241,6 +241,7 @@ button i,a i{margin-right:6px;}
 .my_panel .body .table thead,.my_panel .body .table tfoot{background:none !important;}
 form .title_bar{padding:8px 10px;font-weight:bold;background:#ebebeb;border-bottom:2px solid #ddd;margin-bottom:14px;}
 .form-horizontal .modal-content .form-group {margin-left:0 !important;margin-right:0 !important;}
+.modal-header .modal-title{font-size:16px;}
 
 /**
  *============================

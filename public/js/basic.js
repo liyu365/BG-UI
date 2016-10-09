@@ -230,7 +230,7 @@ $(window).on('hashchange', function () {
             tip = $btn.attr('data-tip');
         }
         target = $btn.attr('data-target');
-        $modal_confirm.find('.modal-body').html('<h4 style="text-align:center;">' + tip + '</h4>');
+        $modal_confirm.find('.modal-body').html('<h5 style="text-align:center;">' + tip + '</h5>');
         $modal_confirm.modal({
             backdrop: 'static'
         });
