@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/public/js/vendor/uploadify/mydemo/uploadify-demo.css">
+<script src="/public/js/vendor/uploadify/jquery.uploadify.min.js"></script>
+
+<div class="content_wrapper">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>uploadify</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success" role="alert">
+                                        uploadify官网：<a target="_blank" href="http://www.uploadify.com/">http://www.uploadify.com/</a>
+                                    </div>
+                                    <input type="button" id="uploadify1"/>
+                                    <div>tip:支持批量上传</div>
+                                    <div id="waitUploadNum"></div>
+                                    <div id="imageView"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $('#uploadify1').uploadify({
+        'auto': true,                                 //选择文件后是否自动上传
+        'multi': true,                               //是否支持多文件上传
+        'swf': '/public/js/vendor/uploadify/uploadify.swf',                                   //swf文件路径
+        'buttonImage': '/public/js/vendor/uploadify/mydemo/btn1.png',                   //按钮图片路径
+        'width': 100,                               //按钮宽
+        'height': 35,                             //按钮高
+        'fileObjName': 'imgFile',                   //表单域的name
+        'uploadLimit': 28,                   //最多上传文件数量，默认999
+        'queueSizeLimit': 28,             //队列长度限制，默认999
+        'buttonCursor': 'hand',                       //上传按钮Hover时的鼠标形状，默认值是’hand’
+        'queueID': 'waitUploadNum',                           //上传队列的#id，用于css。不设定则不显示进度条
+        'removeCompleted': true,           //表示在上传完成后是否删除队列中的对应元素。默认是True，即上传完成后就看不到上传文件进度条了
+        'removeTimeout': 1,               //表示上传完成后多久删除队列中的进度条，默认为3秒
+        'preventCaching': true,                       //若设置为true，一个随机数将被加载swf文件URL的后面，防止浏览器缓存
+        'fileSizeLimit': '3072KB',               //上传文件大小限制，默认单位是KB，若需要限制大小在100KB以内，可设置该属性为：100KB
+        'fileTypeDesc': 'Image Files',                 //文件类型的说明
+        'fileTypeExts': '*.gif; *.jpg; *.png; *.jpeg',                 //指定允许上传的文件类型。默认*.*。比如只支持gif , jpg , png类型的图像，那么该属性设置为: ‘*.gif; *.jpg ; *.png’
+        'formData': '{"uid":"250"}',                         //指定上传文件附带的其他数据
+        'uploader': '/api/upload.php',                         //服务器脚本路径
+        'onUploadSuccess': function (file, data, response) {
+            /**
+             * 在每一个文件上传成功后触发！
+             * file：为uploadify自己组装的文件对象
+             * data：为服务器返回的信息
+             * response：true或false
+             */
+            var data = jQuery.parseJSON(data);
+            var $imageView = $("#imageView");
+            $imageView.append($("<img src='" + data.url + "'/>"));  //这里不能遍历data对象，因为它不是一个队列
+            console.log(data);
+        }
+    });
+</script>
