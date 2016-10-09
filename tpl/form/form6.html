@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="/public/js/vendor/kindeditor/themes/default/default.css">
+<script src="/public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
+
+<div class="content_wrapper">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>kindeditor</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success" role="alert">
+                                        kindeditor官网：<a target="_blank" href="http://kindeditor.org/">http://kindeditor.org/</a>
+                                    </div>
+                                    <input type="button" value="上传文件按钮" id="btn1"/>
+                                    <input type="button" value="上传单个文件 - 弹出层" id="btn2" class="btn btn-primary"/>
+                                    <input type="button" value="批量上传文件 - 弹出层" id="btn3" class="btn btn-primary"/>
+                                    <div id="imageView1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    //上传文件按钮
+    (function(){
+        var uploadbutton = KindEditor.uploadbutton({
+            button: $("#btn1")[0],
+            fieldName: 'imgFile',
+            url: '/server/upload.php',
+            afterUpload: function (data) {
+                var data = arguments[0];  //获取json数据
+                console.log(data);
+                var $imageView = $("#imageView1");
+                if (data.error == 0) {
+                    var img = document.createElement("img");
+                    img.src = data.url;
+                    $imageView.append(img);
+                } else {
+                    alert(data.message);
+                }
+            },
+            afterError: function (str) {
+                alert('自定义错误信息: ' + str);
+            }
+        });
+        uploadbutton.fileBox.change(function (e) {
+            uploadbutton.submit();
+        });
+    })();
+
+    //上传单个文件-弹出层
+    (function () {
+        KindEditor($("#btn2")[0]).click(function () {
+            var dialog = KindEditor.dialog({
+                width: 300,
+                title: '上传图片',
+                body: '<div style="margin:10px; text-align:center;"><input type="text" id="url" readonly="readonly" style="width:180px;margin-right:8px;" /><input type="button" id="uploadButton" value="选择图片" /></div>',
+                closeBtn: {
+                    name: '关闭',
+                    click: function (e) {
+                        dialog.remove();
+                    }
+                },
+                noBtn: {
+                    name: '取消',
+                    click: function (e) {
+                        dialog.remove();
+                    }
+                }
+            });
+            var uploadbutton = KindEditor.uploadbutton({
+                button: KindEditor('#uploadButton')[0],
+                fieldName: 'imgFile',
+                url: '/server/upload.php',
+                afterUpload: function (data) {
+                    var data = arguments[0];  //获取json数据
+                    console.log(data);
+                    var $imageView = $("#imageView1");
+                    if (data.error == 0) {
+                        var img = document.createElement("img");
+                        img.src = data.url;
+                        $imageView.append(img);
+                    }
+                    dialog.remove();
+                }
+            });
+            uploadbutton.fileBox.change(function (e) {
+                uploadbutton.submit();
+            });
+        });
+    })();
+
+    //批量上传文件-弹出层
+    (function(){
+        var editor = KindEditor.editor({
+            themeType: 'default',
+            langType: 'zh-CN',
+            basePath: '/public/js/vendor/kindeditor/',
+            themesPath: '/public/js/vendor/kindeditor/themes/',
+            pluginsPath: '/public/js/vendor/kindeditor/plugins/',
+            langPath: '/public/js/vendor/kindeditor/lang/',
+            fieldName: 'imgFile',
+            uploadJson: '/server/upload.php',
+            allowFileManager: true
+        });
+        KindEditor($("#btn3")[0]).click(function () {
+            editor.loadPlugin('multiimage', function () {
+                editor.plugin.multiImageDialog({
+                    clickFn: function (urlList) {
+                        //urlList是一个服务器返回的json,是一个json队列（只有在图片上传后才会有成员）
+                        var $imageView = $("#imageView1");
+                        for (var i = 0; i < urlList.length; i++) {
+                            (function (i) {
+                                $imageView.append($("<img src='" + urlList[i].url + "'/>"));
+                            })(i);
+                        }
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+    })();
+</script>
