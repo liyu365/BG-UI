@@ -261,7 +261,7 @@
                         img = $('<img src="'+src+'">');
                         $wrap.empty().append( img );
                     } else {
-                        $.ajax('../../server/preview.php', {
+                        $.ajax('/public/js/vendor/webuploader/server/preview.php', {
                             method: 'POST',
                             data: src,
                             dataType:'json'
