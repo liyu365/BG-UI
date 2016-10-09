@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/public/js/vendor/kindeditor/themes/default/default.css">
+<script src="/public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
+<link rel="stylesheet" href="/public/css/vendor/myCrop.css">
+<script src="/public/js/vendor/myCrop/myCrop.js"></script>
+
+<div class="content_wrapper">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>myCrop</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success" role="alert">
+                                        myCrop是 <a target="_blank" href="https://github.com/liyu365"><b>作者liyu</b></a> 自己编写的一个图像裁剪插件。
+                                    </div>
+                                    <div class="J_myCrop" id="cropDemo">
+                                        <img id="crop_IMG" src="/public/images/12906920069232.jpg"/>
+                                    </div>
+                                    <input type="button" value="上传文件按钮" id="btn1"/>
+                                    <div id="imageView1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    (function(){
+        var loadedFun = function () {
+            new MyCrop($("#cropDemo"), {
+                //预览图的大小代表了最后成品图的实际大小和比例，也代表了选取框的初始大小和比例
+                "previewWidth": 200,
+                "previewHeight": 200
+            });
+        };
+        var $img = $("#crop_IMG");
+        $img.on("load", function () {
+            loadedFun();
+        });
+        if ($img[0].complete) {
+            loadedFun();
+        }
+    })();
+
+    //上传文件按钮
+    (function(){
+        var uploadbutton = KindEditor.uploadbutton({
+            button: $("#btn1")[0],
+            fieldName: 'imgFile',
+            url: '/server/upload.php',
+            afterUpload: function (data) {
+                var data = arguments[0];  //获取json数据
+                console.log(data);
+                var $imageView = $("#imageView1");
+                if (data.error == 0) {
+                    var img = document.createElement("img");
+                    img.src = data.url;
+                    $imageView.append(img);
+                } else {
+                    alert(data.message);
+                }
+            },
+            afterError: function (str) {
+                alert('自定义错误信息: ' + str);
+            }
+        });
+        uploadbutton.fileBox.change(function (e) {
+            uploadbutton.submit();
+        });
+    })();
+</script>
