@@ -1,4 +1,4 @@
-<script src="../../public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
+<script src="../public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
 
 <div class="content_wrapper">
 
@@ -14,7 +14,7 @@
                                     <div class="alert alert-success" role="alert">
                                         kindeditor官网：<a target="_blank" href="http://kindeditor.org/">http://kindeditor.org/</a>
                                     </div>
-                                    <form class="form-horizontal" role="form" method="get" action="../../server/ajaxReturn.json">
+                                    <form class="form-horizontal" role="form" method="get" action="../server/ajaxReturn.json">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">新闻标题</label>
                                             <div class="col-sm-3">
@@ -60,10 +60,10 @@
     var editor = KindEditor.create($textarea[0], {
         themeType: 'default',
         langType: 'zh-CN',
-        basePath: '../../public/js/vendor/kindeditor/',
-        themesPath: '../../public/js/vendor/kindeditor/themes/',
-        pluginsPath: '../../public/js/vendor/kindeditor/plugins/',
-        langPath: '../../public/js/vendor/kindeditor/lang/',
+        basePath: '../public/js/vendor/kindeditor/',
+        themesPath: '../public/js/vendor/kindeditor/themes/',
+        pluginsPath: '../public/js/vendor/kindeditor/plugins/',
+        langPath: '../public/js/vendor/kindeditor/lang/',
         filePostName: 'imgFile',    //imgFile是编辑器中图片上传的默认表单域名称
         width: '100%',
         minHeight: 200,    //最小高度，不用写px单位
@@ -77,7 +77,7 @@
             //编辑器失去焦点时，同步编辑器中的内容到textarea，在异步提交内容的时候，必须写！否则textarea中的值是不会改变的
             this.sync();
         },
-        uploadJson: '../../server/upload.php',
+        uploadJson: '../server/upload.php',
         items: [
             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',

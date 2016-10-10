@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="../../public/js/vendor/kindeditor/themes/default/default.css">
-<script src="../../public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
-<link rel="stylesheet" href="../../public/css/vendor/myCrop.css">
-<script src="../../public/js/vendor/myCrop/myCrop.js"></script>
+<link rel="stylesheet" href="../public/js/vendor/kindeditor/themes/default/default.css">
+<script src="../public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
+<link rel="stylesheet" href="../public/css/vendor/myCrop.css">
+<script src="../public/js/vendor/myCrop/myCrop.js"></script>
 
 <div class="content_wrapper">
 
@@ -57,7 +57,7 @@
         var uploadbutton = KindEditor.uploadbutton({
             button: $("#btn1")[0],
             fieldName: 'imgFile',
-            url: '../../server/upload.php',
+            url: '../server/upload.php',
             afterUpload: function (data) {
                 var data = arguments[0];  //获取json数据
                 console.log(data);
