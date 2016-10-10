@@ -20,10 +20,12 @@
 }
 
 #uploader .placeholder .webuploader-pick {
-    font-size: 18px;
-    background: #00b7ee;
-    border-radius: 3px;
-    line-height: 44px;
+    font-size: 14px;
+    background: #009f6c;
+    border:1px solid #00855a;
+    border-radius: 4px;
+    height:34px;
+    line-height: 34px;
     padding: 0 30px;
     color: #fff;
     display: inline-block;
@@ -33,7 +35,8 @@
 }
 
 #uploader .placeholder .webuploader-pick-hover {
-    background: #00a2d4;
+    background: #006c49;
+    border:1px solid #004831;
 }
 
 #uploader .placeholder .flashTip {
@@ -107,6 +110,8 @@
 }
 
 #uploader .filelist li p.progress {
+    /*TODO: 暂时无法更新进度条，所以先隐藏*/
+    display:none;
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -332,12 +337,12 @@
 }
 
 #uploader .statusBar .btns .uploadBtn {
-    background: #00b7ee;
+    background: #009f6c;
     color: #fff;
     border-color: transparent;
 }
 #uploader .statusBar .btns .uploadBtn:hover {
-    background: #00a2d4;
+    background: #006c49;
 }
 
 #uploader .statusBar .btns .uploadBtn.disabled {
