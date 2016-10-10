@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/public/js/vendor/kindeditor/themes/default/default.css">
-<script src="/public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
+<link rel="stylesheet" href="../../public/js/vendor/kindeditor/themes/default/default.css">
+<script src="../../public/js/vendor/kindeditor/kindeditor-all-min.js"></script>
 
 <div class="content_wrapper">
 
@@ -36,7 +36,7 @@
         var uploadbutton = KindEditor.uploadbutton({
             button: $("#btn1")[0],
             fieldName: 'imgFile',
-            url: '/server/upload.php',
+            url: '../../server/upload.php',
             afterUpload: function (data) {
                 var data = arguments[0];  //获取json数据
                 console.log(data);
@@ -81,7 +81,7 @@
             var uploadbutton = KindEditor.uploadbutton({
                 button: KindEditor('#uploadButton')[0],
                 fieldName: 'imgFile',
-                url: '/server/upload.php',
+                url: '../../server/upload.php',
                 afterUpload: function (data) {
                     var data = arguments[0];  //获取json数据
                     console.log(data);
@@ -105,12 +105,12 @@
         var editor = KindEditor.editor({
             themeType: 'default',
             langType: 'zh-CN',
-            basePath: '/public/js/vendor/kindeditor/',
-            themesPath: '/public/js/vendor/kindeditor/themes/',
-            pluginsPath: '/public/js/vendor/kindeditor/plugins/',
-            langPath: '/public/js/vendor/kindeditor/lang/',
+            basePath: '../../public/js/vendor/kindeditor/',
+            themesPath: '../../public/js/vendor/kindeditor/themes/',
+            pluginsPath: '../../public/js/vendor/kindeditor/plugins/',
+            langPath: '../../public/js/vendor/kindeditor/lang/',
             fieldName: 'imgFile',
-            uploadJson: '/server/upload.php',
+            uploadJson: '../../server/upload.php',
             allowFileManager: true
         });
         KindEditor($("#btn3")[0]).click(function () {
