@@ -1,1 +1,1 @@
-BG+，基于Bootstrap的后台主题UI框架
+BG+锛屼竴涓熀浜嶣ootstrap鐨勫悗鍙颁富棰楿I妗嗘灦
