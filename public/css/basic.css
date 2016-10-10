@@ -156,11 +156,10 @@ body{width:100%;min-height:100%;background:#ededed;}
     -webkit-transition: all 250ms cubic-bezier(0.1,.57,.1,1);
     transition: all 250ms cubic-bezier(0.1,.57,.1,1);
 }
-.form-signin .subBtn:focus{background:#007e55;outline:none;}
-.form-signin .subBtn:hover{background:#007e55;}
-.form-signin .help{color:#999;padding:10px;text-align:center;}
-.form-signin .copyright{text-align:center;}
-.form-signin .copyright i{margin-right:4px;color:#999;}
+.form-signin .subBtn:focus{background:#00855a;outline:none;}
+.form-signin .help{color:#999;margin:14px 0;text-align:center;}
+.form-signin .copyright{text-align:center;margin:14px 0;}
+.form-signin .copyright i{margin-right:4px;}
 .form-signin .copyright a{color:#3a3633;}
 
 /**
