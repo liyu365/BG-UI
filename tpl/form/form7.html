@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="../public/js/vendor/Jcrop/css/jquery.Jcrop.min.css">
+<script src="../public/js/vendor/Jcrop/js/jquery.Jcrop.min.js"></script>
+<style type="text/css">
+    .jcrop-holder #preview-pane {
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        top: 10px;
+        right: -280px;
+        padding: 6px;
+        border: 1px rgba(0,0,0,.4) solid;
+        background-color: white;
+
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+
+        -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* The Javascript code will set the aspect ratio of the crop
+       area based on the size of the thumbnail preview,
+       specified here */
+    #preview-pane .preview-container {
+        width: 250px;
+        height: 170px;
+        overflow: hidden;
+    }
+</style>
+
+<div class="content_wrapper">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>Jcrop</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success" role="alert">
+                                        Jcrop官网：<a target="_blank" href="http://deepliquid.com/content/Jcrop.html">http://deepliquid.com/content/Jcrop.html</a>
+                                    </div>
+                                    <form style="width:200px;">
+                                        <div style="margin-bottom:10px;">
+                                            <img src="../public/images/12906920069232.jpg" id="target"/>
+                                            <div id="preview-pane">
+                                                <div class="preview-container">
+                                                    <img src="../public/images/12906920069232.jpg" class="jcrop-preview" alt="Preview" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>x1</label>
+                                            <input type="text" class="form-control"  name="x1" value=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>y1</label>
+                                            <input type="text" class="form-control"  name="y1" value=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>x2</label>
+                                            <input type="text" class="form-control"  name="x2" value=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>y2</label>
+                                            <input type="text" class="form-control"  name="y2" value=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>w</label>
+                                            <input type="text" class="form-control"  name="w" value=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>h</label>
+                                            <input type="text" class="form-control"  name="h" value=""/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    (function(){
+        var input_x1 = $('input[name="x1"]');
+        var input_y1 = $('input[name="y1"]');
+        var input_x2 = $('input[name="x2"]');
+        var input_y2 = $('input[name="y2"]');
+        var input_w = $('input[name="w"]');
+        var input_h = $('input[name="h"]');
+
+        // Create variables (in this scope) to hold the API and image size
+        var jcrop_api,
+                boundx,
+                boundy,
+
+        // Grab some information about the preview pane
+                $preview = $('#preview-pane'),
+                $pcnt = $('#preview-pane .preview-container'),
+                $pimg = $('#preview-pane .preview-container img'),
+
+                xsize = $pcnt.width(),
+                ysize = $pcnt.height();
+
+        console.log('init', [xsize, ysize]);
+        $('#target').Jcrop({
+            onChange: updatePreview,
+            onSelect: updatePreview,
+            aspectRatio: xsize / ysize
+        }, function () {
+            // Use the API to get the real image size
+            var bounds = this.getBounds();
+            boundx = bounds[0];
+            boundy = bounds[1];
+            // Store the API in the jcrop_api variable
+            jcrop_api = this;
+
+            // Move the preview into the jcrop container for css positioning
+            console.log(jcrop_api.ui.holder);
+            $preview.appendTo(jcrop_api.ui.holder);
+        });
+
+        function updatePreview(c) {
+            if (parseInt(c.w) > 0) {
+                var rx = xsize / c.w;
+                var ry = ysize / c.h;
+                $pimg.css({
+                    width: Math.round(rx * boundx) + 'px',
+                    height: Math.round(ry * boundy) + 'px',
+                    marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                    marginTop: '-' + Math.round(ry * c.y) + 'px'
+                });
+                input_x1.val(parseInt(c.x));
+                input_y1.val(parseInt(c.y));
+                input_x2.val(parseInt(c.x2));
+                input_y2.val(parseInt(c.y2));
+                input_w.val(parseInt(c.w));
+                input_h.val(parseInt(c.h));
+            } else {
+                input_x1.val('');
+                input_y1.val('');
+                input_x2.val('');
+                input_y2.val('');
+                input_w.val('');
+                input_h.val('');
+            }
+        }
+    })();
+</script>
