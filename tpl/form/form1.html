@@ -9,7 +9,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form class="form-inline" role="form" method="get" action="../server/ajaxReturn.json" data-validate="validate1">
+                                    <form class="form-inline" role="form" method="get" action="../server/ajaxReturn.json" data-validate="validate1" data-callBack="callback1">
                                         <div class="form-group">
                                             <label>新闻分类</label>
                                             <select name="pid" class="form-control">
@@ -129,11 +129,14 @@
 <script>
     function validate1($from) {
         var pid = $from.find('select[name="pid"]');
-        if (pid.val()==0) {
+        if (pid.val() == 0) {
             return '请选择分类';
         }
 
         return true;
+    }
+    function callback1(returnData, $from) {
+        console.log($from);
     }
     function validate2($from) {
         var title = $from.find('input[name="title"]');

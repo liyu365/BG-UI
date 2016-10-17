@@ -3,7 +3,8 @@
 ##简述
 
 此项目为UI框架，并根据url中的hash提供简单的路由功能，页面的数据渲染依然交给服务器端。
-UI基于BootStrap3。
+UI基于BootStrap3。兼容移动端。兼容IE8+及其它主流浏览器。
+[演示地址](https://liyu365.github.io/BG-UI/)
 
 ##目录结构
 
@@ -15,7 +16,7 @@ public
   ┗images
   ┗js
     ┠vendor      //存放第三方js文件
-    ┠ajaxForm.js //所有ajax提交都由ajaxForm.js进行包装
+    ┠ajaxForm.js //所有ajax提交都由ajaxForm.js进行包装（非第三方插件，为作者编写）
     ┗basic.js    //基础js
 tpl
   ┠...           //存放演示页面，目录结构随意
@@ -70,10 +71,13 @@ window.common_conf = {
 
         return true;
     }
+    function callback1(returnData, $from) {
+        console.log($from);
+    }
 </script>
 ```
 
-* `method`：提交方式，默认为"get"
+* `method`：提交方式(必须设置)
 * `action`：提交地址(必须设置)
 * `data-validate`：提交之前的验证函数名
 * `data-callBack`：服务器响应后的自定义回调函数名
@@ -81,7 +85,7 @@ window.common_conf = {
 * `enterSend`：是否支持回车提交。"on"为启用，其他都为不启用
 * `data-sendingText`：提交过程中`.J_ajaxSubmitBtn`的提示文字
 
-#### 默认回调
+#### 默认动作
 
 前面的`data-useDefaultCallBack`配置项已经提到了，服务器接到响应后ajaxForm.js会执行一些默认的动作。
 执行的默认动作由服务器返回的json进行定义：
@@ -102,9 +106,5 @@ window.common_conf = {
 
 ####验证
 
-`<form>`标签中的`data-validate`用来配置验证函数名，此验证函数在进行ajax提交前会接收到被jQuery封装的form DOM对象（具体可查看"基本用法"）。
-自定义函数返回`true`则可以正常提交；可以返回字符串来对错误信息进行提示，错误的提示方式已经在框架中进行了封装。
-
-
-
-
+`<form>`标签中的`data-validate`用来配置验证函数名，此验证函数在进行ajax提交前会接收到被jQuery封装的form DOM对象（具体可查看"基本用法"中的代码示例）。
+自定义函数返回`true`则正常提交；可以返回字符串来对错误信息进行提示，错误的提示方式已经在框架中进行了封装。
