@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="../public/js/vendor/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css">
+<script src="../public/js/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../public/js/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+
+<div class="content_wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>选择日期</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success" role="alert">
+                                        bootstrap-datepicker官网：<a target="_blank" href="https://github.com/uxsolutions/bootstrap-datepicker/">https://github.com/uxsolutions/bootstrap-datepicker/</a>
+                                    </div>
+                                    <div style="max-width:300px;">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>选择日期</label>
+                                                <input type="text" class="form-control" id="datepicker1" value="2016-10-16"/>
+                                            </div>
+                                            <hr/>
+                                            <div class="form-group">
+                                                <label>选择日期（采用input-group）</label>
+                                                <div class="input-group date" id="datepicker2">
+                                                    <input type="text" class="form-control" value="2016-10-16">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="form-group">
+                                                <label>范围选择</label>
+                                                <div class="input-group input-daterange" id="datepicker3">
+                                                    <input type="text" class="form-control" value="2012-04-05">
+                                                    <span class="input-group-addon">到</span>
+                                                    <input type="text" class="form-control" value="2012-04-19">
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="form-group">
+                                                <label>内联日期选择</label>
+                                                <div id="datepicker4" data-date="2012-04-19"></div>
+                                                <input type="text" class="form-control input-sm" id="my_hidden_input" value="2012-04-19">
+                                            </div>
+                                            <hr/>
+                                            <div class="form-group">
+                                                <label>禁用</label>
+                                                <div class="input-group date" id="datepicker5">
+                                                    <input type="text" class="form-control" value="2016-10-16" disabled>
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    //选择日期
+    $('#datepicker1').datepicker({
+        language:'zh-CN',
+        format:'yyyy-mm-dd'
+    });
+
+    //选择日期（采用input-group）
+    $('#datepicker2').datepicker({
+        language:'zh-CN',
+        format:'yyyy-mm-dd'
+    });
+
+    //选择日期（采用input-group）
+    $('#datepicker3').datepicker({
+        language:'zh-CN',
+        format:'yyyy-mm-dd'
+    });
+
+    //内联日期选择
+    var $datepicker4 = $('#datepicker4');
+    $datepicker4.datepicker({
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd'
+    });
+    $datepicker4.on("changeDate", function () {
+        $('#my_hidden_input').val($datepicker4.datepicker('getFormattedDate'));
+    });
+
+    //禁用
+    $('#datepicker5').datepicker({
+        language:'zh-CN',
+        format:'yyyy-mm-dd'
+    });
+</script>
