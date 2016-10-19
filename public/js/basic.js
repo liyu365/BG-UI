@@ -56,7 +56,7 @@ $(window).on('hashchange', function () {
     checkURL();
 });
 
-//header三个按钮
+//header上的按钮
 (function () {
     //菜单按钮
     var $left_panel = $('#left_panel');
@@ -81,38 +81,38 @@ $(window).on('hashchange', function () {
         }
     });
     //全屏按钮
-    function launchFullscreen(element) {
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-        }
-    }
+    /*function launchFullscreen(element) {
+     if (element.requestFullscreen) {
+     element.requestFullscreen();
+     } else if (element.mozRequestFullScreen) {
+     element.mozRequestFullScreen();
+     } else if (element.webkitRequestFullscreen) {
+     element.webkitRequestFullscreen();
+     } else if (element.msRequestFullscreen) {
+     element.msRequestFullscreen();
+     }
+     }
 
-    function exitFullscreen() {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        }
-    }
+     function exitFullscreen() {
+     if (document.exitFullscreen) {
+     document.exitFullscreen();
+     } else if (document.mozCancelFullScreen) {
+     document.mozCancelFullScreen();
+     } else if (document.webkitExitFullscreen) {
+     document.webkitExitFullscreen();
+     }
+     }
 
-    var $fullScreen_btn = $('#page_header .fullScreen_btn');
-    $fullScreen_btn.on('click', function () {
-        if (!$fullScreen_btn.hasClass('active')) {
-            launchFullscreen(document.documentElement);
-            $fullScreen_btn.addClass('active')
-        } else {
-            exitFullscreen();
-            $fullScreen_btn.removeClass('active')
-        }
-    });
+     var $fullScreen_btn = $('#page_header .fullScreen_btn');
+     $fullScreen_btn.on('click', function () {
+     if (!$fullScreen_btn.hasClass('active')) {
+     launchFullscreen(document.documentElement);
+     $fullScreen_btn.addClass('active')
+     } else {
+     exitFullscreen();
+     $fullScreen_btn.removeClass('active')
+     }
+     });*/
 })();
 
 //主导航
@@ -225,14 +225,14 @@ $(window).on('hashchange', function () {
     $(document).on('click', '.J_confirm_modal', function (e) {
         e.preventDefault();
         var $btn = $(this);
-        var tip = '<h4 style="text-align:center;">确认吗？</h4>';
+        var tip = '<h5 style="text-align:center;">确认吗？</h5>';
         if (typeof $btn.attr('data-tip') !== 'undefined') {
             tip = $btn.attr('data-tip');
         }
         target = $btn.attr('data-target');
         $modal_confirm.find('.modal-body').html('<h5 style="text-align:center;">' + tip + '</h5>');
         $modal_confirm.modal({
-            backdrop: 'static'
+            /*backdrop: 'static'*/
         });
     });
     $modal_confirm.on('click', '.J_confirm_btn', function () {
@@ -260,6 +260,11 @@ $(window).on('hashchange', function () {
                     if ($.trim(returnData.state) == 'success' && returnData.refresh === true) {
                         $modals.on('hidden.bs.modal', function () {
                             $modals.off('hidden.bs.modal');
+                            //如果为绝对地址则跳转出后台中心
+                            if (/^(http|https).+$/.test(returnData.referer)) {
+                                window.location = returnData.referer;
+                                return true;
+                            }
                             if ($.trim(returnData.referer)) {
                                 //根据返回的hash加载页面
                                 loadURL($.trim(returnData.referer));

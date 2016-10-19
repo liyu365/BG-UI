@@ -1,13 +1,13 @@
-#BG-UI,一个后台UI框架
+#BG-UI,一个可以快速上手的后台UI框架
 
-##简述
+##1.简述
 
-此项目为UI框架，并根据url中的hash提供简单的路由功能，页面的数据渲染依然交给服务器端。
+此项目为后台UI框架，并根据url中的hash提供简单的路由功能，页面的数据渲染依然交给服务器端。
 UI基于BootStrap3。兼容移动端。兼容IE8+及其它主流浏览器。 
 [github地址](https://github.com/liyu365/BG-UI) 
 [演示地址](https://liyu365.github.io/BG-UI/)
 
-##目录结构
+##2.目录结构
 
 ```
 public
@@ -27,7 +27,7 @@ server            //存放测试用服务器脚本
 index.html        //入口（登录页面）
 ```
 
-##配置
+##3.配置
 
 在主页面加载basic.js文件之前定义：
 
@@ -38,13 +38,13 @@ window.common_conf = {
 };
 ```
 
-##路由
+##4.路由
 
 实现方式：监听hashChange事件，利用`"common_conf.baseURL" + "当前页面的hash"`形成请求地址，并用ajax请求服务器来获取需要显示的html。
 
-##表单的提交、验证、回调
+##5.表单的提交、验证、回调
 
-#### 基本用法
+####5.1基本用法
 
 只要页面中的`<form>`标签中包含class为`.J_ajaxSubmitBtn`的元素，则此表单均受ajaxForm.js（非第三方插件，为作者编写）控制。
 当`.J_ajaxSubmitBtn`元素被点击后，ajaxForm.js会自动收集`<form>`标签上的属性值，并形成一次ajax提交，例如：
@@ -86,9 +86,9 @@ window.common_conf = {
 * `enterSend`：是否支持回车提交。"on"为启用，其他都为不启用
 * `data-sendingText`：提交过程中`.J_ajaxSubmitBtn`的提示文字
 
-#### 默认动作
+####5.2默认动作
 
-前面的`data-useDefaultCallBack`配置项已经提到了，服务器接到响应后ajaxForm.js会执行一些默认的动作。
+前面的`data-useDefaultCallBack`配置项已经提到了，浏览器接到响应后ajaxForm.js会执行一些默认的动作。
 执行的默认动作由服务器返回的json进行定义：
 
 ```
@@ -105,7 +105,9 @@ window.common_conf = {
 * `state`：提交是否成功，只有当值为"success"时才视为成功（才会判断是否执行刷新操作）
 * `message`：提示信息，state不为"success"时会进行提示
 
-####验证
+>注意这里的`referer`的值为将要显示的页面对应的hash。如果提供的`referer`以http或https开头，则整个控制台都会被刷新
 
-`<form>`标签中的`data-validate`用来配置验证函数名，此验证函数在进行ajax提交前会接收到被jQuery封装的form DOM对象（具体可查看"基本用法"中的代码示例）。
+####5.3验证
+
+`<form>`标签中的`data-validate`用来配置验证函数名，此验证函数在进行ajax提交前会接收到被jQuery封装的form DOM对象（具体可查看"5.1基本用法"中的代码示例）。
 自定义函数返回`true`则正常提交；可以返回字符串来对错误信息进行提示，错误的提示方式已经在框架中进行了封装。

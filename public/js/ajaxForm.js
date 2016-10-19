@@ -47,6 +47,11 @@ AjaxForm.prototype.init = function (options) {
                             var $modals = $('.modal');
                             //如果返回的结果成功并需要跳转
                             if ($.trim(returnData.state) == 'success' && returnData.refresh === true) {
+                                //如果为绝对地址则跳转出后台中心
+                                if (/^(http|https).+$/.test(returnData.referer)) {
+                                    window.location = returnData.referer;
+                                    return true;
+                                }
                                 //如果是弹出框中的表单，需要等弹出框关闭后才能进行跳转；否则直接跳转
                                 if (_this.$form.parent().hasClass('modal-content')) {
                                     $modals.on('hidden.bs.modal', function () {
@@ -69,7 +74,7 @@ AjaxForm.prototype.init = function (options) {
                                     }
                                 }
                             }
-                            if ($.trim(returnData.state) == 'success'){
+                            if ($.trim(returnData.state) == 'success') {
                                 $modals.modal('hide');
                             }
                             $tip.remove();
