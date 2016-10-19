@@ -2,7 +2,7 @@
 
 ##1.简述
 
-![](https://liyu365.github.io/BG-UI/logo.png) 
+![BG-UI](https://liyu365.github.io/BG-UI/logo.png) 
 
 此项目为后台UI框架，并根据url中的hash提供简单的路由功能，页面的数据渲染依然交给服务器端。
 UI基于BootStrap3。兼容移动端。兼容IE8+及其它主流浏览器。 
