@@ -114,4 +114,6 @@ window.common_conf = {
 `<form>`标签中的`data-validate`用来配置验证函数名，此验证函数在进行ajax提交前会接收到被jQuery封装的form DOM对象（具体可查看"5.1基本用法"中的代码示例）。
 自定义函数返回`true`则正常提交；可以返回字符串来对错误信息进行提示，错误的提示方式已经在框架中进行了封装。
 
-**Under MIT Liscese. Copyright by 李昱(liyu365)**
+##6.License
+
+**Under MIT License. Copyright by 李昱(liyu365)**
