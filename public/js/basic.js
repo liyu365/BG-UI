@@ -118,55 +118,81 @@ $(window).on('hashchange', function () {
 //主导航
 (function () {
     var $nav = $('#left_panel nav');
-    var $a = $nav.find('a');
-    $a.each(function () {
-        var $btn = $(this);
-        var $parent_li = $btn.parent();
-        var $ul = $btn.next('ul');
-        var $i = $btn.find('b i');
-        if ($ul.length >= 1) {
-            $btn.on('click', function () {
-                var ul_orgH = $ul.innerHeight();
-                if (!$parent_li.hasClass('open')) {
-                    $parent_li.addClass('open');
-                    $ul.css({'height': 0}).css('display', 'block');
-                    $i.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-                    $ul.animate({"height": ul_orgH}, {
-                            queue: false, duration: 200, complete: function () {
-                                $ul.css('height', 'auto');
-                            }
-                        }
-                    );
-                } else {
-                    $parent_li.removeClass('open');
-                    $i.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
-                    $ul.animate({"height": 0}, {
-                            queue: false, duration: 200, complete: function () {
-                                $ul.css({'height': "auto"}).css('display', 'none');
-                            }
-                        }
-                    );
-                }
 
-                $others_li = $btn.parent().siblings('.open');
-                $others_li.each(function () {
-                    var $parent_li = $(this);
-                    var $btn = $parent_li.find('a:first');
-                    var $ul = $btn.next('ul');
-                    var $i = $btn.find('b i');
-                    $parent_li.removeClass('open');
-                    $i.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
-                    $ul.animate({"height": 0}, {
-                            queue: false, duration: 200, complete: function () {
-                                $ul.css({'height': "auto"}).css('display', 'none');
+    var invoke_nav = function () {
+        var $a = $nav.find('a');
+        $a.each(function () {
+            var $btn = $(this);
+            var $parent_li = $btn.parent();
+            var $ul = $btn.next('ul');
+            var $i = $btn.find('b i');
+            if ($ul.length >= 1) {
+                $btn.on('click', function () {
+                    var ul_orgH = $ul.innerHeight();
+                    if (!$parent_li.hasClass('open')) {
+                        $parent_li.addClass('open');
+                        $ul.css({'height': 0}).css('display', 'block');
+                        $i.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+                        $ul.animate({"height": ul_orgH}, {
+                                queue: false, duration: 200, complete: function () {
+                                    $ul.css('height', 'auto');
+                                }
                             }
-                        }
-                    );
+                        );
+                    } else {
+                        $parent_li.removeClass('open');
+                        $i.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+                        $ul.animate({"height": 0}, {
+                                queue: false, duration: 200, complete: function () {
+                                    $ul.css({'height': "auto"}).css('display', 'none');
+                                }
+                            }
+                        );
+                    }
+
+                    $others_li = $btn.parent().siblings('.open');
+                    $others_li.each(function () {
+                        var $parent_li = $(this);
+                        var $btn = $parent_li.find('a:first');
+                        var $ul = $btn.next('ul');
+                        var $i = $btn.find('b i');
+                        $parent_li.removeClass('open');
+                        $i.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+                        $ul.animate({"height": 0}, {
+                                queue: false, duration: 200, complete: function () {
+                                    $ul.css({'height': "auto"}).css('display', 'none');
+                                }
+                            }
+                        );
+                    });
                 });
-            });
+            }
+        });
+    };
+
+    $.ajax({
+        type: 'get',
+        url: common_conf.navJSON,
+        cache: false,
+        data: '',
+        dataType: 'json',
+        beforeSend: function () {
+
+        },
+        success: function (returnData) {
+            var data = {};
+            data.nav = returnData;
+            var render = catpl('nav_tpl');
+            var html = render(data);
+            $nav.html(html);
+            invoke_nav();
+        },
+        error: function () {
+
         }
     });
 
+    //导航下面的收起按钮
     var $minifyBtn = $('#left_panel .minifyBtn');
     var $body = $('body');
     $minifyBtn.on('click', function () {
@@ -222,14 +248,13 @@ $(window).on('hashchange', function () {
 (function () {
     var $modal_confirm = $("#modal_confirm");
     var target = '';
+    var type = '';
     $(document).on('click', '.J_confirm_modal', function (e) {
         e.preventDefault();
         var $btn = $(this);
-        var tip = '<h5 style="text-align:center;">确认吗？</h5>';
-        if (typeof $btn.attr('data-tip') !== 'undefined') {
-            tip = $btn.attr('data-tip');
-        }
-        target = $btn.attr('data-target');
+        var tip = typeof $btn.attr('data-tip') !== 'undefined' ? $btn.attr('data-tip') : '确认吗？';
+        target = typeof $btn.attr('data-target') !== 'undefined' ? $btn.attr('data-target') : '';
+        type = typeof $btn.attr('data-type') !== 'undefined' ? $btn.attr('data-type') : 'get';
         $modal_confirm.find('.modal-body').html('<h5 style="text-align:center;">' + tip + '</h5>');
         $modal_confirm.modal({
             /*backdrop: 'static'*/

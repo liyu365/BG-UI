@@ -19,7 +19,8 @@
     <script>
         window.common_conf = {
             defaultHash: 'page/desktop.html',
-            baseURL: './'
+            baseURL: './',
+            navJSON: '../server/nav.json'
         };
     </script>
 </head>
@@ -47,66 +48,30 @@
                 </div>
             </span>
         </div>
-        <nav>
+        <script id="nav_tpl" type="text/html">
             <ul>
-                <li>
-                    <a href="#page/desktop.html"><i class="fa fa-lg fa-fw fa-home"></i><span>工作台</span></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-table"></i><span>表格</span><b><i class="fa fa-plus-square-o"></i></b></a>
+                {{foreach nav as bigMenu i}}
+                <li><a href="#{{bigMenu.url}}"><i class="fa fa-lg fa-fw fa-file-text"></i><span>{{bigMenu.t}}</span>{{if bigMenu.child && bigMenu.child.length >= 1}}<b><i class="fa fa-plus-square-o"></i></b>{{/if}}</a>
+                    {{if bigMenu.child && bigMenu.child.length >= 1}}
                     <ul>
-                        <li><a href="#table/table1.html"><i class="fa fa-fw fa-file"></i><span>基本表格</span></a></li>
-                        <li><a href="#table/table2.html"><i class="fa fa-fw fa-file"></i><span>DataTables</span></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-wpforms"></i><span>表单</span><b><i class="fa fa-plus-square-o"></i></b></a>
-                    <ul>
-                        <li><a href="#form/form1.html"><i class="fa fa-fw fa-file"></i><span>基本表单</span></a></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-file"></i><span>编辑器</span><b><i class="fa fa-plus-square-o"></i></b></a>
+                        {{foreach bigMenu.child as medMenu j}}
+                        <li><a href="#{{medMenu.url}}"><i class="fa fa-fw fa-file"></i><span>{{medMenu.t}}</span>{{if medMenu.child && medMenu.child.length >= 1}}<b><i class="fa fa-plus-square-o"></i></b>{{/if}}</a>
+                            {{if medMenu.child && medMenu.child.length >= 1}}
                             <ul>
-                                <li><a href="#form/form2.html"><i class="fa fa-fw fa-file"></i><span>summernote</span></a></li>
-                                <li><a href="#form/form3.html"><i class="fa fa-fw fa-file"></i><span>kindeditor</span></a></li>
+                                {{foreach medMenu.child as minMenu k}}
+                                <li><a href="#{{minMenu.url}}"><i class="fa fa-fw fa-file"></i><span>{{minMenu.t}}</span></a></li>
+                                {{/foreach}}
                             </ul>
+                            {{/if}}
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-file"></i><span>文件上传</span><b><i class="fa fa-plus-square-o"></i></b></a>
-                            <ul>
-                                <li><a href="#form/form4.html"><i class="fa fa-fw fa-file"></i><span>WebUploader</span></a></li>
-                                <li><a href="#form/form5.html"><i class="fa fa-fw fa-file"></i><span>uploadify</span></a></li>
-                                <li><a href="#form/form6.html"><i class="fa fa-fw fa-file"></i><span>kindeditor</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-file"></i><span>图像裁剪</span><b><i class="fa fa-plus-square-o"></i></b></a>
-                            <ul>
-                                <li><a href="#form/form7.html"><i class="fa fa-fw fa-file"></i><span>Jcrop</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-file"></i><span>选择日期</span><b><i class="fa fa-plus-square-o"></i></b></a>
-                            <ul>
-                                <li><a href="#form/form8.html"><i class="fa fa-fw fa-file"></i><span>bootstrap-datepicker</span></a></li>
-                            </ul>
-                        </li>
+                        {{/foreach}}
                     </ul>
+                    {{/if}}
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-list"></i><span>UI元素</span><b><i class="fa fa-plus-square-o"></i></b></a>
-                    <ul>
-                        <li><a href="#widget/widget1.html"><i class="fa fa-fw fa-file"></i><span>弹出框</span></a></li>
-                        <li><a href="#widget/widget2.html"><i class="fa fa-fw fa-file"></i><span>树形视图</span></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-file-text"></i><span>页面</span><b><i class="fa fa-plus-square-o"></i></b></a>
-                    <ul>
-                        <li><a href="#page/page1.html"><i class="fa fa-fw fa-file"></i><span>站点设置</span></a></li>
-                    </ul>
-                </li>
+                {{/foreach}}
             </ul>
-        </nav>
+        </script>
+        <nav></nav>
         <span class="minifyBtn"><i class="fa fa-arrow-circle-left"></i></span>
     </aside>
     <div id="main">
@@ -135,6 +100,7 @@
 
     <script src="../public/js/vendor/jquery.min.js"></script>
     <script src="../public/js/vendor/bootstrap/dist/bootstrap.js"></script>
+    <script src="../public/js/vendor/catpl.js"></script>
     <script src="../public/js/vendor/ie10-viewport-bug-workaround.js"></script>
     <script src="../public/js/ajaxForm.js"></script>
     <script src="../public/js/basic.js"></script>
