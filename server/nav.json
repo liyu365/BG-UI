@@ -31,7 +31,7 @@
         "child": [
           {
             "t": "summernote",
-            "url": "#form/form2.html"
+            "url": "form/form2.html"
           },
           {
             "t": "kindeditor",
