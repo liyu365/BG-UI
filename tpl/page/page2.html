@@ -1,0 +1,120 @@
+<div class="content_wrapper">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>编辑角色</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form class="form-horizontal" role="form" method="get" action="../server/ajaxReturn.json">
+                                        <div class="title_bar">编辑角色</div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">角色名称</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" placeholder="角色名称" name="title">
+                                            </div>
+                                            <p class="col-sm-7 help-block">必填</p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">角色描述</label>
+                                            <div class="col-sm-3">
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                            <p class="col-sm-7 help-block">简单叙述一下角色的功能，200字以内</p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">角色状态</label>
+                                            <div class="col-sm-3">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="audit" value="1" checked>正常
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="audit" value="2">禁止
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <p class="col-sm-7 help-block"></p>
+                                        </div>
+                                        <div class="title_bar">编辑该角色权限</div>
+                                        <div class="form-group role_permission">
+                                            <div class="col-sm-2 control-label"><div class="checkbox"><label><input type="checkbox">产品</label></div></div>
+                                            <div class="col-sm-3">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="checkbox"><label><input type="checkbox">产品分类管理</label></div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="checkbox"><label><input type="checkbox">添加二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除一级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">编辑分类</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="checkbox"><label><input type="checkbox">产品分类管理</label></div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="checkbox"><label><input type="checkbox">添加二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除一级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">编辑分类</label></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="col-sm-7 help-block"></p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group role_permission">
+                                            <div class="col-sm-2 control-label"><div class="checkbox"><label><input type="checkbox">产品</label></div></div>
+                                            <div class="col-sm-3">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="checkbox"><label><input type="checkbox">产品分类管理</label></div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="checkbox"><label><input type="checkbox">添加二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除一级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">编辑分类</label></div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="checkbox"><label><input type="checkbox">产品分类管理</label></div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="checkbox"><label><input type="checkbox">添加二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除一级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">删除二级分类</label></div>
+                                                        <div class="checkbox"><label><input type="checkbox">编辑分类</label></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="col-sm-7 help-block"></p>
+                                        </div>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button type="button" class="btn btn-primary J_ajaxSubmitBtn">提交</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+</div>

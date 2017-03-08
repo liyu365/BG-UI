@@ -255,3 +255,16 @@ div.dataTables_wrapper div.dataTables_paginate{margin:20px 0 0 0 !important;}
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
+
+/**
+ *============================
+ *角色权限面板
+ *============================
+ */
+.role_permission .control-label{padding-top:10px;}
+@media screen and (max-width: 767px)  {
+    .role_permission .control-label{padding-top:0 !important;padding-bottom:10px !important;}
+}
+.role_permission .control-label label{font-weight:bold;}
+.role_permission .checkbox{min-height:0;padding-top:0;}
+.role_permission .panel-body .checkbox{float:left;margin:4px 0;padding-right:20px;}

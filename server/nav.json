@@ -100,6 +100,10 @@
       {
         "t": "站点设置",
         "url": "page/page1.html"
+      },
+      {
+        "t": "编辑角色",
+        "url": "page/page2.html"
       }
     ]
   }
