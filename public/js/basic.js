@@ -332,7 +332,6 @@ $(window).on('hashchange', function () {
             type: $from.attr("method"),  //提交方式
             url: $from.attr("action"),  //提交地址
             subBtn: $from.find(".J_ajaxSubmitBtn"),  //提交按钮
-            enterSend: $from.attr("data-enterSend") === 'on',  //是否支持回车提交
             sendingText: typeof $from.attr("data-sendingText") !== 'undefined' ? $from.attr("data-sendingText") : '提交中...',  //提交中的按钮文字
             useDefaultCallBack: $from.attr("data-useDefaultCallBack") !== 'off', //是否调用默认回调函数(只要值不为'off'都调用)
             callBack: typeof $from.attr("data-callBack") !== 'undefined' ? eval('(' + $from.attr("data-callBack") + ')') : false,  //自定义回调函数

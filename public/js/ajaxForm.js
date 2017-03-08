@@ -3,17 +3,8 @@ function AjaxForm($form, options) {
     _this.$form = $form;
     //初始化变量
     _this.init(options);
-    //监听提交按钮点击事件
+    //提交
     _this.send();
-    //监听回车事件
-    if (_this.enterSend) {
-        _this.$form.find('input').on('keydown', function (e) {
-            if (e.keyCode == 13) {
-                e.preventDefault();
-                _this.send();
-            }
-        });
-    }
 }
 
 AjaxForm.prototype.init = function (options) {
@@ -98,8 +89,6 @@ AjaxForm.prototype.init = function (options) {
     } else {
         _this.subBtnText = _this.$subBtn.text();
     }
-    //是否按回车自动提交表单
-    _this.enterSend = opts.enterSend;
     //获取按钮中的发送提示文字
     _this.sendingText = opts.sendingText;
     //获取自定义回调函数名，它和默认回调并不冲突，也就是说只要定义了自定义回调函数就一定会被执行
