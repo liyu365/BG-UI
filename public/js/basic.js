@@ -387,3 +387,44 @@ $(window).on('hashchange', function () {
         }
     });
 })();
+
+//角色权限面板
+(function () {
+    $(document).on('change', '.role_permission .control-label input[type=checkbox]', function () {
+        var $role_permission = $(this).parent().parent().parent().parent();
+        if ($(this).prop("checked")) {
+            $role_permission.find('input[type=checkbox]').each(function () {
+                $(this).prop("checked", true);
+            });
+        } else {
+            $role_permission.find('input[type=checkbox]').each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+
+    $(document).on('change', '.role_permission .panel-heading input[type=checkbox]', function () {
+        var $panel = $(this).parent().parent().parent().parent();
+        var $bigCheck = $panel.parent().parent().find('.control-label input[type=checkbox]');
+        if ($(this).prop("checked")) {
+            $panel.find('input[type=checkbox]').each(function () {
+                $(this).prop("checked", true);
+            });
+            $bigCheck.prop("checked", true);
+        } else {
+            $panel.find('input[type=checkbox]').each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+
+    $(document).on('change', '.role_permission .panel-body input[type=checkbox]', function () {
+        var $panel = $(this).parent().parent().parent().parent();
+        var $bigCheck = $panel.parent().parent().find('.control-label input[type=checkbox]');
+        var $midCheck = $panel.find('.panel-heading input[type=checkbox]');
+        if ($(this).prop("checked")) {
+            $midCheck.prop("checked", true);
+            $bigCheck.prop("checked", true);
+        }
+    });
+})();
