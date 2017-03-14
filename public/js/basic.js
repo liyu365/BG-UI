@@ -264,7 +264,7 @@ $(window).on('hashchange', function () {
         if (!$confirm_btn.hasClass('subBtn_unable')) {
             $confirm_btn.addClass('subBtn_unable');
             $.ajax({
-                type: 'get',
+                type: type,
                 url: target,
                 cache: false,
                 data: '',
