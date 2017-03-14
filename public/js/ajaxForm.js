@@ -49,7 +49,7 @@ AjaxForm.prototype.init = function (options) {
                                         $modals.off('hidden.bs.modal');
                                         if ($.trim(returnData.referer)) {
                                             //根据返回的hash加载页面
-                                            loadURL($.trim(returnData.referer));
+                                            window.location.hash = $.trim(returnData.referer);
                                         } else {
                                             //刷新本页
                                             checkURL();
@@ -58,7 +58,7 @@ AjaxForm.prototype.init = function (options) {
                                 } else {
                                     if ($.trim(returnData.referer)) {
                                         //根据返回的hash加载页面
-                                        loadURL($.trim(returnData.referer));
+                                        window.location.hash = $.trim(returnData.referer);
                                     } else {
                                         //刷新本页
                                         checkURL();
@@ -139,10 +139,9 @@ AjaxForm.prototype.send = function () {
                 console.log(_this.returnData);
                 _this.defaultCallBack(_this.returnData);  //执行默认回调
                 typeof _this.callBack === 'function' && _this.callBack(_this.returnData, _this.$form); //执行自定义回调
-                if ($.trim(_this.returnData.state) == 'success') {
-                    //重置表单
+                /*if ($.trim(_this.returnData.state) == 'success') {
                     _this.$form[0].reset();
-                }
+                }*/
                 //重置发送按钮状态
                 if (_this.$subBtn[0].nodeName.toLowerCase() == 'input') {
                     _this.$subBtn.val(_this.subBtnText);
