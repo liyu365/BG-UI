@@ -19,10 +19,12 @@ AjaxForm.prototype.init = function (options) {
     _this.defaultCallBack = function (returnData) {
         if (_this.useDefaultCallBack) {
             var $tip = null;
+            var tipText = '';
             if ($.trim(returnData.state) == 'success') {
-                $tip = $('<span class="ajaxForm_tip_success"><i class="fa fa-check-circle-o"></i> 提交成功</span>');
+                tipText = returnData.message ? returnData.message : '提交成功';
+                $tip = $('<span class="ajaxForm_tip_success"><i class="fa fa-check-circle-o"></i> ' + tipText + '</span>');
             } else {
-                var tipText = returnData.message ? returnData.message : '提交失败';
+                tipText = returnData.message ? returnData.message : '提交失败';
                 $tip = $('<span class="ajaxForm_tip_warning"><i class="fa fa-exclamation-circle"></i> ' + tipText + '</span>');
             }
             if (_this.$form.parent().hasClass('modal-content')) {
@@ -140,8 +142,8 @@ AjaxForm.prototype.send = function () {
                 _this.defaultCallBack(_this.returnData);  //执行默认回调
                 typeof _this.callBack === 'function' && _this.callBack(_this.returnData, _this.$form); //执行自定义回调
                 /*if ($.trim(_this.returnData.state) == 'success') {
-                    _this.$form[0].reset();
-                }*/
+                 _this.$form[0].reset();
+                 }*/
                 //重置发送按钮状态
                 if (_this.$subBtn[0].nodeName.toLowerCase() == 'input') {
                     _this.$subBtn.val(_this.subBtnText);

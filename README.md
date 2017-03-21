@@ -59,7 +59,6 @@ window.common_conf = {
     data-validate="validate1"
     data-callBack="callback1"
     data-useDefaultCallBack="on"
-    enterSend="on"
     data-sendingText="提交中"
     >
     <input type="text" placeholder="新闻标题" name="title">
@@ -86,7 +85,6 @@ window.common_conf = {
 * `data-validate`：提交之前的验证函数名
 * `data-callBack`：服务器响应后的自定义回调函数名
 * `data-useDefaultCallBack`：服务器响应后是否执行框架的默认动作。只要值不为'off'都会调用。
-* `enterSend`：是否支持回车提交。"on"为启用，其他都为不启用
 * `data-sendingText`：提交过程中`.J_ajaxSubmitBtn`的提示文字
 
 #### 5.2默认动作
