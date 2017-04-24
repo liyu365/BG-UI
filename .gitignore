@@ -1,9 +1,7 @@
 .svn/
 .idea/
 node_modules/
-/public/css_dist/
-/public/js_dist/
-/attachments/
+attachments/
 /public/js/vendor/webuploader/server/upload/
-/public/js/vendor/webuploader/server/upload/upload_tmp
+/public/js/vendor/webuploader/server/upload_tmp
 
