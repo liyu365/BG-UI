@@ -49,11 +49,12 @@ AjaxForm.prototype.send = function () {
             },
             error: function () {
                 alert('请求失败!!!!!!');
+                _this.$subBtn.removeClass('subBtn_unable');
             },
             complete: function () {
                 _this.reset_subBtn();
                 _this.sending = false;
-                //_this.$subBtn.removeClass('subBtn_unable');
+                //_this.$subBtn.removeClass('subBtn_unable');  此状态在默认回调中移除
             }
         });
     }

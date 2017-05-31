@@ -273,8 +273,6 @@ $(window).on('hashchange', function () {
                     $confirm_btn.addClass('subBtn_sending');
                 },
                 success: function (returnData) {
-                    $confirm_btn.removeClass('subBtn_sending');
-                    console.log(returnData);
                     var $modals = $('.modal');
                     if ($.trim(returnData.state) != 'success') {
                         var tipText = returnData.message ? returnData.message : '提交失败';
@@ -305,8 +303,10 @@ $(window).on('hashchange', function () {
                 },
                 error: function () {
                     alert('请求失败!!!!!!');
-                    $confirm_btn.removeClass('subBtn_sending');
                     $confirm_btn.removeClass('subBtn_unable');
+                },
+                complete: function () {
+                    $confirm_btn.removeClass('subBtn_sending');
                 }
             });
         }
