@@ -341,17 +341,15 @@ $(window).on('hashchange', function () {
         var $btn = $(this);
         if ($btn.hasClass('pull_down')) {
             $btn.removeClass('pull_down').addClass('pull_up');
-            var $tr = $btn.parent();
-            while ($tr[0].nodeName.toLowerCase() !== 'tr') {
-                $tr = $tr.parent();
-            }
+            /*var $tr = $btn.parent();
+             while ($tr[0].nodeName.toLowerCase() !== 'tr') {
+             $tr = $tr.parent();
+             }*/
+            var $tr = $btn.parents('tr');
             $tr.siblings().css('display', 'none');
         } else if ($btn.hasClass('pull_up')) {
             $btn.removeClass('pull_up').addClass('pull_down');
-            var $tr2 = $btn.parent();
-            while ($tr2[0].nodeName.toLowerCase() !== 'tr') {
-                $tr2 = $tr2.parent();
-            }
+            var $tr2 = $btn.parents('tr');
             $tr2.siblings().css('display', 'table-row');
         }
     });
@@ -373,10 +371,7 @@ $(window).on('hashchange', function () {
             $all_J_pull_btn.each(function () {
                 var $btn = $(this);
                 $btn.removeClass('pull_down').addClass('pull_up');
-                var $tr = $btn.parent();
-                while ($tr[0].nodeName.toLowerCase() !== 'tr') {
-                    $tr = $tr.parent();
-                }
+                var $tr = $btn.parents('tr');
                 $tr.siblings().css('display', 'none');
             });
         }
@@ -386,7 +381,7 @@ $(window).on('hashchange', function () {
 //角色权限面板
 (function () {
     $(document).on('change', '.role_permission .control-label input[type=checkbox]', function () {
-        var $role_permission = $(this).parent().parent().parent().parent();
+        var $role_permission = $(this).parents('.role_permission');
         if ($(this).prop("checked")) {
             $role_permission.find('input[type=checkbox]').each(function () {
                 $(this).prop("checked", true);
@@ -399,8 +394,8 @@ $(window).on('hashchange', function () {
     });
 
     $(document).on('change', '.role_permission .panel-heading input[type=checkbox]', function () {
-        var $panel = $(this).parent().parent().parent().parent();
-        var $bigCheck = $panel.parent().parent().find('.control-label input[type=checkbox]');
+        var $panel = $(this).parents('.panel');
+        var $bigCheck = $panel.parents('.role_permission').find('.control-label input[type=checkbox]');
         if ($(this).prop("checked")) {
             $panel.find('input[type=checkbox]').each(function () {
                 $(this).prop("checked", true);
@@ -414,8 +409,8 @@ $(window).on('hashchange', function () {
     });
 
     $(document).on('change', '.role_permission .panel-body input[type=checkbox]', function () {
-        var $panel = $(this).parent().parent().parent().parent();
-        var $bigCheck = $panel.parent().parent().find('.control-label input[type=checkbox]');
+        var $panel = $(this).parents('.panel');
+        var $bigCheck = $panel.parents('.role_permission').find('.control-label input[type=checkbox]');
         var $midCheck = $panel.find('.panel-heading input[type=checkbox]');
         if ($(this).prop("checked")) {
             $midCheck.prop("checked", true);
