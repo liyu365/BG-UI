@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="../public/js/vendor/Eonasdan_bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+<script src="../public/js/vendor/moment/min/moment.min.js"></script>
+<script src="../public/js/vendor/moment/locale/zh-cn.js"></script>
+<script src="../public/js/vendor/Eonasdan_bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+<div class="content_wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>Eonasdan/bootstrap-datetimepicker</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success" role="alert">
+                                        Eonasdan/bootstrap-datetimepicker依赖于moment。<br/>
+                                        Eonasdan/bootstrap-datetimepicker官网：<a target="_blank" href="https://github.com/Eonasdan/bootstrap-datetimepicker">https://github.com/Eonasdan/bootstrap-datetimepicker</a><br/>
+                                        moment官网：<a target="_blank" href="https://github.com/moment/moment">https://github.com/moment/moment</a>
+                                    </div>
+                                    <div style="max-width:300px;">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>选择日期</label>
+                                                <input type="text" class="form-control" id="datetimepicker1" value="2016-10-16"/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
+        locale: 'zh-cn'
+    });
+</script>

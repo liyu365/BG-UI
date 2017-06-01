@@ -74,6 +74,14 @@
           {
             "t": "bootstrap-datepicker",
             "url": "form/form8.html"
+          },
+          {
+            "t": "smalot/bootstrap-datetimepicker",
+            "url": "form/form9.html"
+          },
+          {
+            "t": "Eonasdan/bootstrap-datetimepicker",
+            "url": "form/form10.html"
           }
         ]
       }
