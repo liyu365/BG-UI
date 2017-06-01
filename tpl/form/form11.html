@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="../public/js/vendor/laydate/need/laydate.css">
+<link rel="stylesheet" href="../public/js/vendor/laydate/skins/default/laydate.css">
+<script src="../public/js/vendor/laydate/laydate.js"></script>
+
+<div class="content_wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <aside>
+                    <header><i class="fa fa-fw fa-file"></i>laydate</header>
+                    <section>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success" role="alert">
+                                        laydate官网：<a target="_blank" href="https://github.com/sentsin/laydate">https://github.com/sentsin/laydate</a><br/>
+                                    </div>
+                                    <div style="max-width:300px;">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>选择日期</label>
+                                                <input type="text" class="form-control" id="datetimepicker1" value="2016-10-16"/>
+                                            </div>
+                                            <hr/>
+                                            <div class="form-group">
+                                                <label>选择日期和时间</label>
+                                                <input type="text" class="form-control" id="datetimepicker2" value="2016-10-16"/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    laydate({
+        elem: '#datetimepicker1',
+        format: 'YYYY/MM/DD',
+        choose: function (datas) {
+            console.log(datas);
+        }
+    });
+    laydate({
+        elem: '#datetimepicker2',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        istime: true,
+        choose: function (datas) {
+            console.log(datas);
+        }
+    });
+</script>

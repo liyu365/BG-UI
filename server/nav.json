@@ -82,6 +82,10 @@
           {
             "t": "Eonasdan/bootstrap-datetimepicker",
             "url": "form/form10.html"
+          },
+          {
+            "t": "laydate",
+            "url": "form/form11.html"
           }
         ]
       }
